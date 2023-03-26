@@ -15,7 +15,15 @@ Window {
 
         TopBar {
             anchors { left: parent.left; right: parent.right; top: parent.top }
+
             height: 56
+
+            backgroundColor: Variables.topBarBgColor
+            foregroundColor: Variables.topBarFgColor
+
+            iconSvg: Variables.menuIconSvg
+
+            title: "Folder name"
         }
 
         Text {

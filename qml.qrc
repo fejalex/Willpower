@@ -4,5 +4,6 @@
         <file>src/qml/Variables.qml</file>
         <file>src/qml/qmldir</file>
         <file>src/qml/Reusable/TopBar.qml</file>
+        <file>src/qml/Reusable/Icon.qml</file>
     </qresource>
 </RCC>
