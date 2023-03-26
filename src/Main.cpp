@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 
     QQmlApplicationEngine engine;
 
-    const QUrl url(QStringLiteral("qrc:/src/qml/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/src/qml/Main.qml"));
 
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated, &app,

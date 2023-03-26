@@ -2,18 +2,18 @@ import QtQuick
 import QtQuick.Window
 
 Window {
-    width: 400
-    height: 800
+    width: Variables.windowWidth
+    height: Variables.windowHeight
     visible: true
-    title: qsTr("Willpower")
+    title: qsTr(Variables.windowTitle)
 
     Rectangle{
         anchors.fill: parent
-        color: "#18171f"
+        color: Variables.backgroundColor
 
         Text {
             anchors.centerIn: parent
-            color: "#F1F1F1"
+            color: Variables.foregroundColor
             text: "Hello world!"
             font.pixelSize: 30
         }
