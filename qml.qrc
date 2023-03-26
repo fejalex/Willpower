@@ -3,5 +3,6 @@
         <file>src/qml/Main.qml</file>
         <file>src/qml/Variables.qml</file>
         <file>src/qml/qmldir</file>
+        <file>src/qml/Reusable/TopBar.qml</file>
     </qresource>
 </RCC>

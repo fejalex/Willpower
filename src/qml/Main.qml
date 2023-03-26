@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Window
 
+import "Reusable"
+
 Window {
     width: Variables.windowWidth
     height: Variables.windowHeight
@@ -10,6 +12,11 @@ Window {
     Rectangle{
         anchors.fill: parent
         color: Variables.backgroundColor
+
+        TopBar {
+            anchors { left: parent.left; right: parent.right; top: parent.top }
+            height: 56
+        }
 
         Text {
             anchors.centerIn: parent
