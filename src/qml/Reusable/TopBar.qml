@@ -4,39 +4,41 @@ import QtQuick.Layouts
 import ".." // For using Variables.qml.
 
 Item {
-    id: root
+    id: element
 
     property string title: Variables.initialTopBarTitle
     property string backgroundColor: Variables.backgroundColor
     property string foregroundColor: Variables.foregroundColor
     property string iconSvg: ""
 
+    signal buttonClicked()
+
     Rectangle {
         id: background
 
         anchors.fill: parent
 
-        color: root.backgroundColor
+        color: element.backgroundColor
 
         RowLayout {
             anchors.fill: parent
 
-            Rectangle {
-                visible: root.iconSvg !== ""
+            Button {
+                visible: element.iconSvg !== ""
 
                 Layout.fillHeight: true
                 Layout.preferredWidth: height
 
-                color: "transparent"
+                width: element.height;
+                height: element.height
 
-                Icon {
-                    id: icon
+                backgroundColor: "transparent"
+                foregroundColor: element.foregroundColor
 
-                    anchors.centerIn: parent
+                iconSvg: element.iconSvg
 
-                    color: root.foregroundColor
-
-                    iconSvg: root.iconSvg
+                onClicked: {
+                    element.buttonClicked()
                 }
             }
 
@@ -46,11 +48,11 @@ Item {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
 
-                color: root.foregroundColor
+                color: element.foregroundColor
 
                 font { pixelSize: Variables.topBarTextSize; bold: true; }
 
-                text: root.title
+                text: element.title
             }
         }
     }

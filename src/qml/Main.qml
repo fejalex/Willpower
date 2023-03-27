@@ -14,6 +14,8 @@ Window {
         color: Variables.backgroundColor
 
         TopBar {
+            id: topBar
+
             anchors { left: parent.left; right: parent.right; top: parent.top }
 
             height: 56
@@ -24,13 +26,10 @@ Window {
             iconSvg: Variables.menuIconSvg
 
             title: "Folder name"
-        }
 
-        Text {
-            anchors.centerIn: parent
-            color: Variables.foregroundColor
-            text: "Hello world!"
-            font.pixelSize: 30
+            onButtonClicked: {
+                console.log("Top bar button clicked.")
+            }
         }
     }
 }
