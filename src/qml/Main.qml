@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Window
 
 import "Reusable"
+import "RecordsList"
 
 Window {
     width: Variables.windowWidth
@@ -30,6 +31,12 @@ Window {
             onButtonClicked: {
                 console.log("Top bar button clicked.")
             }
+        }
+
+        BottomBar {
+            id: bottomBar
+
+            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
         }
     }
 }

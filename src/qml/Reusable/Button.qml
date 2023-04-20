@@ -22,8 +22,6 @@ Item {
     readonly property int contentWidth: row.width
     readonly property int contentHeight: row.height
 
-    width: contentWidth; height: contentHeight
-
     signal clicked()
 
     Rectangle {

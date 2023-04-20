@@ -7,8 +7,10 @@ Item {
     id: element
 
     property string title: Variables.initialTopBarTitle
+
     property string backgroundColor: Variables.backgroundColor
     property string foregroundColor: Variables.foregroundColor
+
     property string iconSvg: ""
 
     signal buttonClicked()

@@ -6,5 +6,6 @@
         <file>src/qml/Reusable/TopBar.qml</file>
         <file>src/qml/Reusable/Icon.qml</file>
         <file>src/qml/Reusable/Button.qml</file>
+        <file>src/qml/RecordsList/BottomBar.qml</file>
     </qresource>
 </RCC>
