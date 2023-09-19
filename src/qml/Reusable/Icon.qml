@@ -5,8 +5,8 @@ import ".." // For using Variables.qml.
 Item {
     id: element
 
-    width: Variables.svgIconsSize
-    height: Variables.svgIconsSize
+    width: 24
+    height: 24
 
     property int lineWidth: Variables.svgIconsStroke
 

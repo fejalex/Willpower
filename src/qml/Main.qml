@@ -2,13 +2,12 @@ import QtQuick
 import QtQuick.Window
 
 import "Reusable"
-import "RecordsList"
 
 Window {
     width: Variables.windowWidth
     height: Variables.windowHeight
     visible: true
-    title: qsTr(Variables.windowTitle)
+    title: qsTr(Variables.applicationName)
 
     Rectangle{
         anchors.fill: parent
@@ -21,8 +20,8 @@ Window {
 
             height: 56
 
-            backgroundColor: Variables.topBarBgColor
-            foregroundColor: Variables.topBarFgColor
+            backgroundColor: Variables.backgroundColor
+            foregroundColor: Variables.foregroundColor
 
             iconSvg: Variables.menuIconSvg
 
@@ -31,12 +30,6 @@ Window {
             onButtonClicked: {
                 console.log("Top bar button clicked.")
             }
-        }
-
-        BottomBar {
-            id: bottomBar
-
-            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
         }
     }
 }

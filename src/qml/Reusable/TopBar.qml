@@ -24,6 +24,7 @@ Item {
 
         RowLayout {
             anchors.fill: parent
+            spacing: 0
 
             Button {
                 visible: element.iconSvg !== ""
@@ -34,7 +35,7 @@ Item {
                 width: element.height;
                 height: element.height
 
-                backgroundColor: "transparent"
+                backgroundColor: element.backgroundColor
                 foregroundColor: element.foregroundColor
 
                 iconSvg: element.iconSvg
@@ -52,7 +53,7 @@ Item {
 
                 color: element.foregroundColor
 
-                font { pixelSize: Variables.topBarTextSize; bold: true; }
+                font { family: Variables.generalFont; pixelSize: 20; weight: Font.DemiBold }
 
                 text: element.title
             }
