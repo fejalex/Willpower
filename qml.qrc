@@ -8,5 +8,7 @@
         <file>src/qml/Reusable/Button.qml</file>
         <file>src/resources/fonts/Nunito.ttf</file>
         <file>src/resources/fonts/JetBrainsMono.ttf</file>
+        <file>src/resources/icons/play.svg</file>
+        <file>src/resources/icons/menu.svg</file>
     </qresource>
 </RCC>

@@ -28,9 +28,6 @@ Item {
     // SVG settings.
     readonly property int svgIconsStroke: 2
 
-    // SVG pathes.
-    readonly property string menuIconSvg: "M3,18H21M3,12H21M3,6H21"
-
     // Font loaders
     FontLoader {
         id: nunitoLoader

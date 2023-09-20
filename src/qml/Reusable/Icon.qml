@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls as Controls
 
 import ".." // For using Variables.qml.
 
@@ -8,24 +9,25 @@ Item {
     width: 24
     height: 24
 
-    property int lineWidth: Variables.svgIconsStroke
+    property int iconWidth: width
+    property int iconHeight: height
 
     property string color: Variables.foregroundColor
+
     property string iconSvg: ""
 
-    Canvas {
-        id: canvas
-
-        width: element.width; height: element.height
-        contextType: "2d"
-
+    // QML hack to render svg with changable color and size.
+    Controls.Button {
         anchors.centerIn: parent
 
-        onPaint: {
-            context.strokeStyle = element.color
-            context.lineWidth = element.lineWidth
-            context.path = element.iconSvg
-            context.stroke()
-        }
+        background: Item { }
+        enabled: false
+
+        icon.source: element.iconSvg
+
+        icon.width: element.iconWidth
+        icon.height: element.iconHeight
+
+        icon.color: element.color
     }
 }

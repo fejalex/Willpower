@@ -12,6 +12,8 @@ Item {
     property string text: ""
     property string iconSvg: ""
 
+    property real iconWidthToHeightRatio: 1
+
     property int cornerRadius: 0
     property int horizontalPadding: 0
     property int verticalPadding: 0
@@ -49,6 +51,8 @@ Item {
                 color: element.foregroundColor
 
                 iconSvg: element.iconSvg
+
+                iconWidth: iconHeight * element.iconWidthToHeightRatio
             }
 
             Rectangle {
