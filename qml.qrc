@@ -10,5 +10,16 @@
         <file>src/resources/fonts/JetBrainsMono.ttf</file>
         <file>src/resources/icons/play.svg</file>
         <file>src/resources/icons/menu.svg</file>
+        <file>src/qml/RecordsList/TimeRecord.qml</file>
+        <file>src/resources/icons/arrow-down.svg</file>
+        <file>src/resources/icons/arrow-left.svg</file>
+        <file>src/resources/icons/arrow-right.svg</file>
+        <file>src/resources/icons/arrow-up.svg</file>
+        <file>src/resources/icons/delete.svg</file>
+        <file>src/resources/icons/edit.svg</file>
+        <file>src/resources/icons/pause.svg</file>
+        <file>src/resources/icons/plus.svg</file>
+        <file>src/resources/icons/stop.svg</file>
+        <file>src/resources/icons/tick.svg</file>
     </qresource>
 </RCC>

@@ -12,7 +12,8 @@ Item {
     property string text: ""
     property string iconSvg: ""
 
-    property real iconWidthToHeightRatio: 1
+    property real iconWidth: 24
+    property real iconHeight: 24
 
     property int cornerRadius: 0
     property int horizontalPadding: 0
@@ -52,7 +53,8 @@ Item {
 
                 iconSvg: element.iconSvg
 
-                iconWidth: iconHeight * element.iconWidthToHeightRatio
+                width: element.iconWidth
+                height: element.iconHeight
             }
 
             Rectangle {

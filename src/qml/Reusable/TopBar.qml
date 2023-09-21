@@ -41,7 +41,8 @@ Item {
 
                 iconSvg: element.iconSvg
 
-                iconWidthToHeightRatio: element.iconWidthToHeightRatio
+                iconWidth: 21
+                iconHeight: 24
 
                 onClicked: {
                     element.buttonClicked()

@@ -9,9 +9,6 @@ Item {
     width: 24
     height: 24
 
-    property int iconWidth: width
-    property int iconHeight: height
-
     property string color: Variables.foregroundColor
 
     property string iconSvg: ""
@@ -25,8 +22,8 @@ Item {
 
         icon.source: element.iconSvg
 
-        icon.width: element.iconWidth
-        icon.height: element.iconHeight
+        icon.width: element.width
+        icon.height: element.height
 
         icon.color: element.color
     }

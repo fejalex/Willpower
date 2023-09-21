@@ -1,7 +1,9 @@
 import QtQuick
 import QtQuick.Window
+import QtQuick.Layouts
 
 import "Reusable"
+import "RecordsList"
 
 Window {
     width: Variables.windowWidth
@@ -17,6 +19,7 @@ Window {
             id: topBar
 
             anchors { left: parent.left; right: parent.right; top: parent.top }
+            z: 2
 
             height: 56
 
@@ -34,6 +37,49 @@ Window {
             }
         }
 
+        Flickable {
+            anchors { top: topBar.bottom; bottom: parent.bottom; left: parent.left; right: parent.right }
+
+            flickableDirection: Flickable.VerticalFlick
+
+            contentHeight: timeRecords.height
+
+            boundsBehavior: Flickable.StopAtBounds
+
+            ColumnLayout {
+                anchors { left: parent.left; right: parent.right; leftMargin: 8; rightMargin: 8 }
+                id: timeRecords
+
+                TimeRecord {
+                    Layout.fillWidth: true
+                    height: 36
+                }
+                TimeRecord {
+                    Layout.fillWidth: true
+                    height: 36
+                    isEditable: false
+                }
+                TimeRecord {
+                    Layout.fillWidth: true
+                    height: 36
+                    isDeletable: false
+                }
+                TimeRecord {
+                    Layout.fillWidth: true
+                    height: 36
+                    isEditable: false
+                    isDeletable: false
+                }
+
+                Rectangle {
+                    Layout.fillWidth: true
+                    height: 80
+
+                    color: Variables.backgroundColor
+                }
+            }
+        }
+
         Button {
             id: playPauseButton
 
@@ -48,7 +94,12 @@ Window {
 
             iconSvg: "qrc:/src/resources/icons/play.svg"
 
-            iconWidthToHeightRatio: 0.917
+            iconWidth: 22
+            iconHeight: 24
+
+            onClicked: {
+                console.log("Start timer button clicked.")
+            }
         }
     }
 }
