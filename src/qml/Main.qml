@@ -6,10 +6,15 @@ import "Reusable"
 import "RecordsList"
 
 Window {
+    id: window
+
     width: Variables.windowWidth
     height: Variables.windowHeight
     visible: true
     title: qsTr(Variables.applicationName)
+
+    property bool isTimerRunning: false
+    property bool isTimerPaused: false
 
     Rectangle{
         anchors.fill: parent
@@ -108,7 +113,77 @@ Window {
             iconHeight: 24
 
             onClicked: {
-                console.log("Start timer button clicked.")
+                if(!window.isTimerRunning) {
+                    console.log("Start timer button clicked.")
+
+                    if(!window.isTimerPaused)
+                    {
+                        anchors.bottomMargin = 88
+                        stopButton.anchors.rightMargin = 16
+                    }
+
+                    window.isTimerRunning = true
+                    window.isTimerPaused = false
+
+                    backgroundColor = Variables.yellowAccentColor
+                    iconSvg = "qrc:/src/resources/icons/pause.svg"
+                    iconWidth = 15
+                    iconHeight = 24
+                }
+                else {
+                    console.log("Pause timer button clicked.")
+
+                    window.isTimerRunning = false
+                    window.isTimerPaused = true
+
+                    backgroundColor = Variables.greenAccentColor
+                    iconSvg = "qrc:/src/resources/icons/play.svg"
+                    iconWidth = 22
+                    iconHeight = 24
+                }
+            }
+
+            Behavior on anchors.bottomMargin {
+                NumberAnimation {
+                    duration: 120
+                }
+            }
+        }
+
+        Button {
+            id: stopButton
+
+            height: 56
+            width: height
+
+            anchors { right: parent.right; bottom: parent.bottom; rightMargin: -height; bottomMargin: 16 }
+
+            backgroundColor: Variables.redAccentColor
+
+            cornerRadius: height / 2
+
+            iconSvg: "qrc:/src/resources/icons/stop.svg"
+
+            iconWidth: 18
+            iconHeight: 24
+
+            onClicked: {
+                window.isTimerRunning = false
+                window.isTimerPaused = false
+
+                playPauseButton.backgroundColor = Variables.greenAccentColor
+                playPauseButton.iconSvg = "qrc:/src/resources/icons/play.svg"
+                playPauseButton.iconWidth = 22
+                playPauseButton.iconHeight = 24
+
+                playPauseButton.anchors.bottomMargin = 16
+                anchors.rightMargin = -height
+            }
+
+            Behavior on anchors.rightMargin {
+                NumberAnimation {
+                    duration: 120
+                }
             }
         }
     }

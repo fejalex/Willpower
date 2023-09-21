@@ -27,4 +27,12 @@ Item {
 
         icon.color: element.color
     }
+
+    onWidthChanged: {
+        implicitWidth = width
+    }
+
+    onHeightChanged: {
+        implicitHeight = height
+    }
 }
