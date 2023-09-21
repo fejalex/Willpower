@@ -50,6 +50,16 @@ Window {
                 anchors { left: parent.left; right: parent.right; leftMargin: 8; rightMargin: 8 }
                 id: timeRecords
 
+                ActiveTimeRecord {
+                    Layout.fillWidth: true
+                    height: 36
+                }
+                ActiveTimeRecord {
+                    Layout.fillWidth: true
+                    height: 36
+                    isPaused: true
+                }
+
                 TimeRecord {
                     Layout.fillWidth: true
                     height: 36

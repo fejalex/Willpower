@@ -81,6 +81,8 @@ Item {
 
             propagateComposedEvents: true
 
+            cursorShape: "PointingHandCursor"
+
             onClicked: {
                 element.clicked()
             }

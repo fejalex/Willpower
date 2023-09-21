@@ -21,5 +21,7 @@
         <file>src/resources/icons/plus.svg</file>
         <file>src/resources/icons/stop.svg</file>
         <file>src/resources/icons/tick.svg</file>
+        <file>src/qml/RecordsList/ActiveTimeRecord.qml</file>
+        <file>src/resources/icons/clock.svg</file>
     </qresource>
 </RCC>
