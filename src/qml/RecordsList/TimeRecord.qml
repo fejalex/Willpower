@@ -10,6 +10,8 @@ Item {
     property bool isEditable: true
     property bool isDeletable: true
 
+    implicitHeight: Math.max(36, timeLabel.height + 8)
+
     Rectangle {
         anchors.fill: parent
 
@@ -23,6 +25,7 @@ Item {
             spacing: 4
 
             Text {
+                id: timeLabel
                 Layout.fillWidth: true
 
                 color: Variables.foregroundColor
@@ -30,6 +33,7 @@ Item {
                 text: "0000d 00h 01m 40s"
 
                 verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WordWrap
             }
 
             Button {

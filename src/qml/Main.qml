@@ -67,21 +67,17 @@ Window {
 
                 TimeRecord {
                     Layout.fillWidth: true
-                    height: 36
                 }
                 TimeRecord {
                     Layout.fillWidth: true
-                    height: 36
                     isEditable: false
                 }
                 TimeRecord {
                     Layout.fillWidth: true
-                    height: 36
                     isDeletable: false
                 }
                 TimeRecord {
                     Layout.fillWidth: true
-                    height: 36
                     isEditable: false
                     isDeletable: false
                 }
@@ -114,8 +110,6 @@ Window {
 
             onClicked: {
                 if(!window.isTimerRunning) {
-                    console.log("Start timer button clicked.")
-
                     if(!window.isTimerPaused)
                     {
                         anchors.bottomMargin = 88
@@ -131,8 +125,6 @@ Window {
                     iconHeight = 24
                 }
                 else {
-                    console.log("Pause timer button clicked.")
-
                     window.isTimerRunning = false
                     window.isTimerPaused = true
 

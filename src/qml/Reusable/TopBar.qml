@@ -60,6 +60,9 @@ Item {
                 font { family: Variables.generalFont; pixelSize: 20; weight: Font.DemiBold }
 
                 text: element.title
+
+                elide: Text.ElideRight
+                maximumLineCount: 1
             }
         }
     }
