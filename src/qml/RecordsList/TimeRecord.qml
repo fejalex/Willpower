@@ -62,7 +62,7 @@ Item {
                 height: width
 
                 iconHeight: 16
-                iconWidth: 16
+                iconWidth: 14
 
                 iconSvg: "qrc:/src/resources/icons/delete.svg"
 

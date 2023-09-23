@@ -23,5 +23,7 @@
         <file>src/resources/icons/tick.svg</file>
         <file>src/qml/RecordsList/ActiveTimeRecord.qml</file>
         <file>src/resources/icons/clock.svg</file>
+        <file>src/resources/icons/close.svg</file>
+        <file>src/qml/Sidebar/FolderOption.qml</file>
     </qresource>
 </RCC>

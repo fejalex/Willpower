@@ -12,7 +12,9 @@ Item {
     property string foregroundColor: Variables.foregroundColor
 
     property string iconSvg: ""
-    property real iconWidthToHeightRatio: 1
+
+    property real iconWidth: 24
+    property real iconHeight: 24
 
     signal buttonClicked()
 
@@ -41,8 +43,8 @@ Item {
 
                 iconSvg: element.iconSvg
 
-                iconWidth: 21
-                iconHeight: 24
+                iconWidth: element.iconWidth
+                iconHeight: element.iconHeight
 
                 onClicked: {
                     element.buttonClicked()

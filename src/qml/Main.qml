@@ -4,6 +4,7 @@ import QtQuick.Layouts
 
 import "Reusable"
 import "RecordsList"
+import "Sidebar"
 
 Window {
     id: window
@@ -32,13 +33,14 @@ Window {
             foregroundColor: Variables.foregroundColor
 
             iconSvg: "qrc:/src/resources/icons/menu.svg"
+            iconWidth: 21
+            iconHeight: 24
 
-            iconWidthToHeightRatio: 0.875
-
-            title: "Folder name"
+            title: "Default"
 
             onButtonClicked: {
-                console.log("Top bar button clicked.")
+                sidebar.visible = true
+                sidebarFade.visible = true
             }
         }
 
@@ -57,11 +59,9 @@ Window {
 
                 ActiveTimeRecord {
                     Layout.fillWidth: true
-                    height: 36
                 }
                 ActiveTimeRecord {
                     Layout.fillWidth: true
-                    height: 36
                     isPaused: true
                 }
 
@@ -175,6 +175,120 @@ Window {
             Behavior on anchors.rightMargin {
                 NumberAnimation {
                     duration: 120
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: sidebarFade
+        anchors.fill: parent
+        color: "black"
+
+        opacity: 0.6
+
+        visible: false
+    }
+
+    Rectangle {
+        id: sidebar
+        anchors { fill: parent; rightMargin: parent.width * 0.2 }
+
+        visible: false
+
+        color: Variables.backgroundColor
+
+        TopBar {
+            id: sidebarTopBar
+            anchors { left: parent.left; right: parent.right; top: parent.top }
+            z: 2
+
+            height: 56
+
+            backgroundColor: Variables.backgroundColor
+            foregroundColor: Variables.foregroundColor
+
+            iconSvg: "qrc:/src/resources/icons/close.svg"
+            iconWidth: 18
+            iconHeight: 24
+
+            title: "Folders"
+
+            onButtonClicked: {
+                sidebar.visible = false
+                sidebarFade.visible = false
+            }
+        }
+
+        Flickable {
+            anchors { top: sidebarTopBar.bottom; bottom: sidebarButtons.top; left: parent.left; right: parent.right }
+
+            flickableDirection: Flickable.VerticalFlick
+
+            contentHeight: folders.height
+
+            boundsBehavior: Flickable.StopAtBounds
+
+            ColumnLayout {
+                anchors { left: parent.left; right: parent.right; }
+                id: folders
+
+                spacing: 0
+
+                FolderOption {
+                    Layout.fillWidth: true
+                }
+
+                FolderOption {
+                    Layout.fillWidth: true
+                    isSelected: true
+                }
+
+                FolderOption {
+                    Layout.fillWidth: true
+                }
+
+                FolderOption {
+                    Layout.fillWidth: true
+                }
+            }
+        }
+
+        Rectangle {
+            id: sidebarButtons
+            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+
+            color: Variables.backgroundColor
+
+            readonly property real padding: 8
+
+            height: 56 + padding * 2
+
+            RowLayout {
+                id: sidebarButtonsRow
+                anchors { fill: parent; margins: sidebarButtons.padding }
+                spacing: sidebarButtons.padding
+
+                Button {
+                    id: createFolderButton
+
+                    height: 56
+                    width: height
+
+                    Layout.alignment: Qt.AlignRight
+
+                    backgroundColor: Variables.greyAccentColor
+
+                    cornerRadius: height / 2
+
+                    iconSvg: "qrc:/src/resources/icons/plus.svg"
+
+                    iconWidth: 21
+                    iconHeight: 24
+
+                    onClicked: {
+                        console.log("Create folder clicked")
+                    }
                 }
             }
         }
