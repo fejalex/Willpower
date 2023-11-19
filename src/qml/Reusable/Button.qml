@@ -9,6 +9,9 @@ Item {
     property string backgroundColor: Variables.backgroundColor
     property string foregroundColor: Variables.foregroundColor
 
+    property string borderColor: "white"
+    property int borderWidth: 0
+
     property string text: ""
     property string iconSvg: ""
 
@@ -39,6 +42,9 @@ Item {
         color: element.backgroundColor
 
         radius: element.cornerRadius
+
+        border.color: element.borderColor
+        border.width: element.borderWidth
 
         RowLayout {
             id: row

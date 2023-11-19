@@ -24,6 +24,7 @@ Item {
     readonly property string placeholderColor: "#696F83"
     // Additional colors.
     readonly property string fadeColor: "#000000"
+    readonly property string selectionBgColor: "#4F6F9E"
 
     // SVG settings.
     readonly property int svgIconsStroke: 2

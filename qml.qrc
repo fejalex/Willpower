@@ -25,5 +25,6 @@
         <file>src/resources/icons/clock.svg</file>
         <file>src/resources/icons/close.svg</file>
         <file>src/qml/Sidebar/FolderOption.qml</file>
+        <file>src/qml/Reusable/LabeledCheckbox.qml</file>
     </qresource>
 </RCC>
