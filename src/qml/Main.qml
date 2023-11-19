@@ -275,13 +275,71 @@ Window {
                     anchors { fill: parent; margins: sidebarButtons.padding }
                     spacing: sidebarButtons.padding
 
+                    // Spacer
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: themeSwitcher
+
+                        property bool isLightThemeEnabled: false
+
+                        Layout.preferredHeight: 56
+                        Layout.preferredWidth: height
+
+                        backgroundColor: Variables.greyAccentColor
+
+                        cornerRadius: height / 2
+
+                        iconSvg: "qrc:/src/resources/icons/sun.svg"
+
+                        iconWidth: 24
+                        iconHeight: 24
+
+                        onClicked: {
+                            if (isLightThemeEnabled)
+                            {
+                                iconSvg = "qrc:/src/resources/icons/sun.svg"
+                                iconWidth = 24
+                                iconHeight = 24
+                            }
+                            else
+                            {
+                                iconSvg = "qrc:/src/resources/icons/moon.svg"
+                                iconWidth = 18
+                                iconHeight = 24
+                            }
+                            isLightThemeEnabled = !isLightThemeEnabled
+                            console.log(sidebarButtonsRow.spacing)
+                        }
+                    }
+
+                    Button {
+                        id: settingsButton
+
+                        Layout.preferredHeight: 56
+                        Layout.preferredWidth: height
+
+                        backgroundColor: Variables.greyAccentColor
+
+                        cornerRadius: height / 2
+
+                        iconSvg: "qrc:/src/resources/icons/settings.svg"
+
+                        iconWidth: 24
+                        iconHeight: 24
+
+                        onClicked: {
+                            console.log("Settings button clicked")
+                        }
+                    }
+
                     Button {
                         id: createFolderButton
 
                         Layout.preferredHeight: 56
                         Layout.preferredWidth: height
-
-                        Layout.alignment: Qt.AlignRight
 
                         backgroundColor: Variables.greyAccentColor
 
