@@ -39,8 +39,8 @@ Item {
             Button {
                 visible: element.isEditable
 
-                width: 36
-                height: width
+                Layout.preferredHeight: 36
+                Layout.preferredWidth: height
 
                 iconHeight: 16
                 iconWidth: 16
@@ -58,8 +58,8 @@ Item {
             Button {
                 visible: element.isDeletable
 
-                width: 36
-                height: width
+                Layout.preferredHeight: 36
+                Layout.preferredWidth: height
 
                 iconHeight: 16
                 iconWidth: 14

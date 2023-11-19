@@ -27,6 +27,9 @@ Item {
 
     signal clicked()
 
+    implicitHeight: verticalPadding * 2 + element.contentHeight
+    implicitWidth: horizontalPadding * 2 + element.contentWidth
+
     Rectangle {
         id: background
 
@@ -78,8 +81,6 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-
-            propagateComposedEvents: true
 
             cursorShape: "PointingHandCursor"
 

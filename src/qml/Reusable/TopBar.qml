@@ -35,9 +35,6 @@ Item {
                 Layout.fillHeight: true
                 Layout.preferredWidth: height
 
-                width: element.height;
-                height: element.height
-
                 backgroundColor: element.backgroundColor
                 foregroundColor: element.foregroundColor
 

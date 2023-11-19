@@ -34,8 +34,8 @@ Item {
             }
 
             Button {
-                width: 48
-                height: width
+                Layout.preferredHeight: 48
+                Layout.preferredWidth: height
 
                 iconHeight: 16
                 iconWidth: 16

@@ -277,8 +277,8 @@ Window {
                 Button {
                     id: createFolderButton
 
-                    height: 56
-                    width: height
+                        Layout.preferredHeight: 56
+                        Layout.preferredWidth: height
 
                     Layout.alignment: Qt.AlignRight
 
