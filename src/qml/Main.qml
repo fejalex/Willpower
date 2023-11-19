@@ -39,8 +39,7 @@ Window {
             title: "Default"
 
             onButtonClicked: {
-                sidebar.visible = true
-                sidebarFade.visible = true
+                sidebarContainer.visible = true
             }
         }
 
@@ -180,21 +179,28 @@ Window {
         }
     }
 
-    Rectangle {
-        id: sidebarFade
+    Item {
+        id: sidebarContainer
         anchors.fill: parent
-        color: "black"
-
-        opacity: 0.6
 
         visible: false
+
+        Rectangle {
+            anchors.fill: parent
+
+            color: Variables.fadeColor
+
+            opacity: 0.8
+
+            MouseArea {
+                anchors.fill:parent
+                cursorShape: "ArrowCursor"
+            }
     }
 
     Rectangle {
         id: sidebar
         anchors { fill: parent; rightMargin: parent.width * 0.2 }
-
-        visible: false
 
         color: Variables.backgroundColor
 
@@ -215,8 +221,7 @@ Window {
             title: "Folders"
 
             onButtonClicked: {
-                sidebar.visible = false
-                sidebarFade.visible = false
+                    sidebarContainer.visible = false
             }
         }
 
