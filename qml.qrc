@@ -29,5 +29,9 @@
         <file>src/resources/icons/sun.svg</file>
         <file>src/resources/icons/moon.svg</file>
         <file>src/resources/icons/settings.svg</file>
+        <file>src/qml/Reusable/Fade.qml</file>
+        <file>src/qml/ModalWindows/FolderCreationModal.qml</file>
+        <file>src/qml/Sidebar/Sidebar.qml</file>
+        <file>src/qml/RecordsList/RecordsList.qml</file>
     </qresource>
 </RCC>

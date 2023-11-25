@@ -6,15 +6,10 @@ import ".." // For using Variables.qml.
 Item {
     id: element
 
-    Item {
-        id: _
-        property bool isChecked: false
-    }
-
     height: itemsRow.height
     implicitHeight: height
 
-    readonly property alias checked: _.isChecked
+    property bool isChecked: false
 
     property string foregroundColor: "white"
     property string backgroundColor: "black"
@@ -36,8 +31,8 @@ Item {
 
             Layout.alignment: Qt.AlignVCenter
 
-            foregroundColor: element.checked ? element.foregroundColor : element.secondaryColor
-            backgroundColor: element.checked ? element.accentColor : element.backgroundColor
+            foregroundColor: element.isChecked ? element.foregroundColor : element.secondaryColor
+            backgroundColor: element.isChecked ? element.accentColor : element.backgroundColor
 
             borderColor: element.accentColor
             borderWidth: 2
@@ -85,7 +80,7 @@ Item {
         cursorShape: "PointingHandCursor"
 
         onClicked: {
-            _.isChecked = !_.isChecked
+            element.isChecked = !element.isChecked
         }
     }
 }
