@@ -16,6 +16,7 @@ Item {
         checkboxEditable.isChecked = false
         checkboxDeletable.isChecked = false
         folderNameTextField.text = ""
+        numberSelector.number = 0
 
         element.visible = true
 
@@ -115,6 +116,19 @@ Item {
 
                 text: "Deletable time records"
                 hintText: "This property can't be changed later"
+            }
+
+            NumberSelector {
+                id: numberSelector
+
+                Layout.fillWidth: true
+
+                font { family: Variables.generalFont; pixelSize: 16 }
+
+                foregroundColor: Variables.foregroundColor
+                backgroundColor: Variables.backgroundColor
+                accentColor: Variables.greyAccentColor
+                secondaryColor: Variables.placeholderColor
             }
 
             RowLayout {

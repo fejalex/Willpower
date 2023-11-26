@@ -33,5 +33,6 @@
         <file>src/qml/ModalWindows/FolderCreationModal.qml</file>
         <file>src/qml/Sidebar/Sidebar.qml</file>
         <file>src/qml/RecordsList/RecordsList.qml</file>
+        <file>src/qml/Reusable/NumberSelector.qml</file>
     </qresource>
 </RCC>
