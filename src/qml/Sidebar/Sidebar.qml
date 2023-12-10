@@ -65,19 +65,31 @@ Item {
 
                 FolderOption {
                     Layout.fillWidth: true
+                    onEditClicked: {
+                        createFolderModal.showEditFolder(title)
+                    }
                 }
 
                 FolderOption {
                     Layout.fillWidth: true
                     isSelected: true
+                    onEditClicked: {
+                        createFolderModal.showEditFolder(title)
+                    }
                 }
 
                 FolderOption {
                     Layout.fillWidth: true
+                    onEditClicked: {
+                        createFolderModal.showEditFolder(title)
+                    }
                 }
 
                 FolderOption {
                     Layout.fillWidth: true
+                    onEditClicked: {
+                        createFolderModal.showEditFolder(title)
+                    }
                 }
             }
         }
@@ -173,7 +185,7 @@ Item {
                     iconHeight: 24
 
                     onClicked: {
-                        createFolderModal.show()
+                        createFolderModal.showCreateFolder()
                     }
                 }
             }

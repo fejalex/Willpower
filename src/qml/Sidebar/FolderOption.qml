@@ -9,7 +9,10 @@ Item {
 
     implicitHeight: Math.max(48, nameLabel.height + 8)
 
+    property alias title: nameLabel.text
     property bool isSelected: false
+
+    signal editClicked()
 
     Rectangle {
         anchors.fill: parent
@@ -46,7 +49,7 @@ Item {
                 foregroundColor: Variables.foregroundColor
 
                 onClicked: {
-                    console.log("Edit folder button clicked.")
+                    element.editClicked()
                 }
             }
         }

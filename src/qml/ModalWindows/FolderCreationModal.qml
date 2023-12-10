@@ -12,19 +12,54 @@ Item {
 
     visible: false
 
-    function show() {
-        checkboxEditable.isChecked = false
-        checkboxDeletable.isChecked = false
-        folderNameTextField.text = ""
-        numberSelector.number = 0
+    states: [
+        State {
+            name: "CreateFolder"
+            PropertyChanges { target: modalTitle; text: "Create folder" }
+            PropertyChanges { target: confirmButton; text: "Create" }
+            PropertyChanges { target: confirmButton; onClicked: {
+                        console.log("Create folder clicked")
+                    } }
+            PropertyChanges { target: element; visible: true }
+            PropertyChanges { target: checkboxEditable; visible: true }
+            PropertyChanges { target: checkboxDeletable; visible: true }
+            PropertyChanges { target: checkboxEditable; isChecked: false }
+            PropertyChanges { target: checkboxDeletable; isChecked: false }
+            PropertyChanges { target: folderNameTextField; text: "" }
+            PropertyChanges { target: numberSelector; number: 0 }
+            PropertyChanges { target: element; visible: true }
+            PropertyChanges { target: folderNameTextField; focus: true }
+            PropertyChanges { target: deleteButton; visible: false }
+        },
+        State {
+            name: "EditFolder"
+            PropertyChanges { target: modalTitle; text: "Edit folder" }
+            PropertyChanges { target: confirmButton; text: "Save" }
+            PropertyChanges { target: confirmButton; onClicked: {
+                        console.log("Save folder properties clicked")
+                    } }
+            PropertyChanges { target: element; visible: true }
+            PropertyChanges { target: checkboxEditable; visible: false }
+            PropertyChanges { target: checkboxDeletable; visible: false }
+            PropertyChanges { target: folderNameTextField; text: "" }
+            PropertyChanges { target: numberSelector; number: 0 }
+            PropertyChanges { target: element; visible: true }
+            PropertyChanges { target: folderNameTextField; focus: true }
+            PropertyChanges { target: deleteButton; visible: true }
+        }
+    ]
 
-        element.visible = true
+    function showCreateFolder() {
+        element.state = "CreateFolder"
+    }
 
-        folderNameTextField.focus = true
+    function showEditFolder(currentTitle) {
+        element.state = "EditFolder"
+        folderNameTextField.text = currentTitle
     }
 
     function close() {
-        element.visible = false
+        element.state = ""
     }
 
     Fade {
@@ -51,7 +86,8 @@ Item {
             spacing: 16
 
             Text {
-                id: test
+                id: modalTitle
+
                 text: "Create folder"
                 color: Variables.foregroundColor
                 font { family: Variables.generalFont; pixelSize: 16; weight: Font.Bold }
@@ -131,12 +167,37 @@ Item {
                 secondaryColor: Variables.placeholderColor
             }
 
+            Button {
+                id: deleteButton
+
+                Layout.preferredHeight: 38
+
+                verticalPadding: 2
+                spacing: 12
+
+                foregroundColor: Variables.redAccentColor
+                backgroundColor: Variables.backgroundColor
+
+                iconSvg: "qrc:/src/resources/icons/delete.svg"
+                iconWidth: 14
+                iconHeight: 16
+
+                text: "Delete folder"
+                font { family: Variables.generalFont; pixelSize: 16; weight: 600 }
+
+                onClicked: {
+                    console.log("Delete folder clicked.")
+                }
+            }
+
             RowLayout {
                 Layout.alignment: Qt.AlignRight
 
                 spacing: 16
 
                 Button {
+                    id: confirmButton
+
                     horizontalPadding: 16
                     verticalPadding: 8
 

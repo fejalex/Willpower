@@ -50,6 +50,7 @@ Item {
             id: row
 
             anchors.centerIn: parent
+            spacing: 0
 
             Icon {
                 id: buttonIcon
