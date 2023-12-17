@@ -17,7 +17,7 @@ Item {
     Rectangle {
         anchors.fill: parent
 
-        color: isSelected ? Variables.timeRecordBgColor : Variables.backgroundColor
+        color: isSelected ? Variables.accentBgColor : Variables.backgroundColor
 
         RowLayout {
             anchors.fill: parent

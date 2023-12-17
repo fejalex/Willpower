@@ -109,7 +109,7 @@ Item {
                 placeholderText: "Folder title"
 
                 placeholderTextColor: Variables.placeholderColor
-                selectionColor: Variables.selectionBgColor
+                selectionColor: Variables.textSelectionBgColor
 
                 selectByMouse: true
 

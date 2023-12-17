@@ -18,7 +18,7 @@ Item {
     Rectangle {
         anchors.fill: parent
 
-        color: Variables.timeRecordBgColor
+        color: Variables.accentBgColor
 
         radius: 8
 

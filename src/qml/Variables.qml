@@ -13,9 +13,8 @@ Item {
 
     // Main application colors.
     readonly property string backgroundColor: "#22212C"
+    readonly property string accentBgColor: "#2D2B3E"
     readonly property string foregroundColor: "#EDECF2"
-    // Records list colors.
-    readonly property string timeRecordBgColor: "#2D2B3E"
     // Accent colors.
     readonly property string greenAccentColor: "#2BD665"
     readonly property string yellowAccentColor: "#EBC43B"
@@ -24,7 +23,7 @@ Item {
     readonly property string placeholderColor: "#696F83"
     // Additional colors.
     readonly property string fadeColor: "#000000"
-    readonly property string selectionBgColor: "#4F6F9E"
+    readonly property string textSelectionBgColor: "#4F6F9E"
 
     // SVG settings.
     readonly property int svgIconsStroke: 2
