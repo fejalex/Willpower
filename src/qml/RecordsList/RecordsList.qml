@@ -4,6 +4,7 @@ import QtQuick.Layouts
 
 import ".." // For using Variables.qml.
 import "../Reusable"
+import "../Sidebar"
 
 Item {
     id: element
@@ -173,5 +174,9 @@ Item {
                 }
             }
         }
+    }
+
+    Sidebar {
+        id: sidebar
     }
 }

@@ -4,6 +4,7 @@ import QtQuick.Layouts
 
 import ".." // For using Variables.qml.
 import "../Reusable"
+import "../ModalWindows"
 
 Item {
     id: element
@@ -190,5 +191,9 @@ Item {
                 }
             }
         }
+    }
+
+    FolderCreationModal {
+        id: createFolderModal
     }
 }

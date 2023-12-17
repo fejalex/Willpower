@@ -3,10 +3,7 @@ import QtQuick.Window
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
 
-import "Reusable"
 import "RecordsList"
-import "Sidebar"
-import "ModalWindows"
 
 Window {
     id: window
@@ -18,13 +15,5 @@ Window {
 
     RecordsList {
         id: recordsList
-    }
-
-    Sidebar {
-        id: sidebar
-    }
-
-    FolderCreationModal {
-        id: createFolderModal
     }
 }
