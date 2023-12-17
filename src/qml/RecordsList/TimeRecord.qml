@@ -12,6 +12,9 @@ Item {
 
     implicitHeight: Math.max(36, timeLabel.height + 8)
 
+    signal editClicked()
+    signal deleteClicked()
+
     Rectangle {
         anchors.fill: parent
 
@@ -52,6 +55,7 @@ Item {
 
                 onClicked: {
                     console.log("Edit time record button clicked.")
+                    editClicked()
                 }
             }
 
@@ -70,7 +74,7 @@ Item {
                 foregroundColor: Variables.foregroundColor
 
                 onClicked: {
-                    console.log("Delete time record button clicked.")
+                    deleteClicked()
                 }
             }
         }

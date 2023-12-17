@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import ".." // For using Variables.qml.
 import "../Reusable"
 import "../Sidebar"
+import "../ModalWindows"
 
 Item {
     id: element
@@ -63,14 +64,26 @@ Item {
 
                 TimeRecord {
                     Layout.fillWidth: true
+
+                    onDeleteClicked: {
+                        recordDeletionModal.display()
+                    }
                 }
                 TimeRecord {
                     Layout.fillWidth: true
                     isEditable: false
+
+                    onDeleteClicked: {
+                        recordDeletionModal.display()
+                    }
                 }
                 TimeRecord {
                     Layout.fillWidth: true
                     isDeletable: false
+
+                    onDeleteClicked: {
+                        recordDeletionModal.display()
+                    }
                 }
                 TimeRecord {
                     Layout.fillWidth: true
@@ -173,6 +186,18 @@ Item {
                     duration: 120
                 }
             }
+        }
+    }
+
+    DeletionModal {
+        id: recordDeletionModal
+
+        function display() {
+            show("Are you sure that you want to delete the time record?")
+        }
+
+        onDeleteClicked: {
+            console.log("Delete time record clicked")
         }
     }
 
