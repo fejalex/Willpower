@@ -186,7 +186,7 @@ Item {
                 font { family: Variables.generalFont; pixelSize: 16; weight: 600 }
 
                 onClicked: {
-                    folderDeletionModal.show("Are you sure that you want to delete the folder?")
+                    folderDeletionModal.display()
                 }
             }
 
@@ -234,6 +234,10 @@ Item {
 
     DeletionModal {
         id: folderDeletionModal
+
+        function display() {
+            show("Are you sure that you want to delete the folder?")
+        }
 
         onDeleteClicked: {
             console.log("Delete folder clicked")
