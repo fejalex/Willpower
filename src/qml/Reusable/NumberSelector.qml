@@ -74,9 +74,7 @@ Item {
 
                 cornerRadius: 8
 
-                iconSvg: "qrc:/src/resources/icons/chevron-down.svg"
-                iconWidth: 14
-                iconHeight: 16
+                iconProperties: Variables.iconChevronDown16
 
                 onClicked: {
                     --element.number
@@ -115,9 +113,7 @@ Item {
 
                 cornerRadius: 8
 
-                iconSvg: "qrc:/src/resources/icons/chevron-up.svg"
-                iconWidth: 14
-                iconHeight: 16
+                iconProperties: Variables.iconChevronUp16
 
                 onClicked: {
                     ++element.number

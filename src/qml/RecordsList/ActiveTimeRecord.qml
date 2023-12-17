@@ -31,10 +31,8 @@ Item {
                 Icon {
                     anchors.centerIn: parent
 
-                    width: 16
-                    height: 16
+                    properties: Variables.iconClock16
 
-                    iconSvg: "qrc:/src/resources/icons/clock.svg"
                     color: Variables.foregroundColor
                 }
             }
@@ -48,10 +46,8 @@ Item {
                 Icon {
                     anchors.centerIn: parent
 
-                    width: 10
-                    height: 16
-
-                    iconSvg: "qrc:/src/resources/icons/pause.svg"
+                    properties: Variables.iconPause16
+                    
                     color: Variables.foregroundColor
                 }
             }

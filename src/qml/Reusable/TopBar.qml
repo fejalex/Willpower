@@ -11,10 +11,7 @@ Item {
     property string backgroundColor: Variables.backgroundColor
     property string foregroundColor: Variables.foregroundColor
 
-    property string iconSvg: ""
-
-    property real iconWidth: 24
-    property real iconHeight: 24
+    property alias iconProperties: button.iconProperties
 
     signal buttonClicked()
 
@@ -30,6 +27,8 @@ Item {
             spacing: 0
 
             Button {
+                id: button
+
                 visible: element.iconSvg !== ""
 
                 Layout.fillHeight: true
@@ -37,11 +36,6 @@ Item {
 
                 backgroundColor: element.backgroundColor
                 foregroundColor: element.foregroundColor
-
-                iconSvg: element.iconSvg
-
-                iconWidth: element.iconWidth
-                iconHeight: element.iconHeight
 
                 onClicked: {
                     element.buttonClicked()

@@ -40,10 +40,7 @@ Item {
                 Layout.preferredHeight: 48
                 Layout.preferredWidth: height
 
-                iconHeight: 16
-                iconWidth: 16
-
-                iconSvg: "qrc:/src/resources/icons/edit.svg"
+                iconProperties: Variables.iconEdit16
 
                 backgroundColor: "transparent"
                 foregroundColor: Variables.foregroundColor

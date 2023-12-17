@@ -6,12 +6,12 @@ import ".." // For using Variables.qml.
 Item {
     id: element
 
-    width: 24
-    height: 24
+    width: properties.width
+    height: properties.height
+
+    property IconProperties properties: IconProperties {}
 
     property string color: Variables.foregroundColor
-
-    property string iconSvg: ""
 
     // QML hack to render svg with changable color and size.
     Controls.Button {
@@ -20,10 +20,10 @@ Item {
         background: Item { }
         enabled: false
 
-        icon.source: element.iconSvg
+        icon.source: element.properties.svg
 
-        icon.width: element.width
-        icon.height: element.height
+        icon.width: element.properties.width
+        icon.height: element.properties.height
 
         icon.color: element.color
     }

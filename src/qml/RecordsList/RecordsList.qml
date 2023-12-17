@@ -30,9 +30,7 @@ Item {
             backgroundColor: Variables.backgroundColor
             foregroundColor: Variables.foregroundColor
 
-            iconSvg: "qrc:/src/resources/icons/menu.svg"
-            iconWidth: 21
-            iconHeight: 24
+            iconProperties: Variables.iconMenu24
 
             title: "Default"
 
@@ -112,10 +110,7 @@ Item {
 
             cornerRadius: height / 2
 
-            iconSvg: "qrc:/src/resources/icons/play.svg"
-
-            iconWidth: 22
-            iconHeight: 24
+            iconProperties: Variables.iconPlay24
 
             onClicked: {
                 if(!element.isTimerRunning) {
@@ -129,18 +124,15 @@ Item {
                     element.isTimerPaused = false
 
                     backgroundColor = Variables.yellowAccentColor
-                    iconSvg = "qrc:/src/resources/icons/pause.svg"
-                    iconWidth = 15
-                    iconHeight = 24
+                    iconProperties = Variables.iconPause24
                 }
                 else {
                     element.isTimerRunning = false
                     element.isTimerPaused = true
 
                     backgroundColor = Variables.greenAccentColor
-                    iconSvg = "qrc:/src/resources/icons/play.svg"
-                    iconWidth = 22
-                    iconHeight = 24
+
+                    iconProperties = Variables.iconPlay24
                 }
             }
 
@@ -163,19 +155,14 @@ Item {
 
             cornerRadius: height / 2
 
-            iconSvg: "qrc:/src/resources/icons/stop.svg"
-
-            iconWidth: 18
-            iconHeight: 24
+            iconProperties: Variables.iconStop24
 
             onClicked: {
                 element.isTimerRunning = false
                 element.isTimerPaused = false
 
                 playPauseButton.backgroundColor = Variables.greenAccentColor
-                playPauseButton.iconSvg = "qrc:/src/resources/icons/play.svg"
-                playPauseButton.iconWidth = 22
-                playPauseButton.iconHeight = 24
+                playPauseButton.iconProperties = Variables.iconPlay24
 
                 playPauseButton.anchors.bottomMargin = 16
                 anchors.rightMargin = -height

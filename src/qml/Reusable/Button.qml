@@ -13,10 +13,8 @@ Item {
     property int borderWidth: 0
 
     property string text: ""
-    property string iconSvg: ""
 
-    property real iconWidth: 24
-    property real iconHeight: 24
+    property alias iconProperties: buttonIcon.properties
 
     property int cornerRadius: 0
     property int horizontalPadding: 0
@@ -60,11 +58,6 @@ Item {
                 Layout.alignment: Qt.AlignVCenter
 
                 color: element.foregroundColor
-
-                iconSvg: element.iconSvg
-
-                width: element.iconWidth
-                height: element.iconHeight
             }
 
             Rectangle {

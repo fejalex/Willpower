@@ -38,9 +38,7 @@ Item {
             backgroundColor: Variables.backgroundColor
             foregroundColor: Variables.foregroundColor
 
-            iconSvg: "qrc:/src/resources/icons/close.svg"
-            iconWidth: 18
-            iconHeight: 24
+            iconProperties: Variables.iconClose24
 
             title: "Folders"
 
@@ -127,25 +125,9 @@ Item {
 
                     cornerRadius: height / 2
 
-                    iconSvg: "qrc:/src/resources/icons/sun.svg"
-
-                    iconWidth: 24
-                    iconHeight: 24
+                    iconProperties: isLightThemeEnabled ? Variables.iconMoon24 : Variables.iconSun24
 
                     onClicked: {
-                        if (isLightThemeEnabled)
-                        {
-                            iconSvg = "qrc:/src/resources/icons/sun.svg"
-                            iconWidth = 24
-                            iconHeight = 24
-                        }
-                        else
-                        {
-                            iconSvg = "qrc:/src/resources/icons/moon.svg"
-                            iconWidth = 18
-                            iconHeight = 24
-                        }
-
                         isLightThemeEnabled = !isLightThemeEnabled
                     }
                 }
@@ -160,10 +142,7 @@ Item {
 
                     cornerRadius: height / 2
 
-                    iconSvg: "qrc:/src/resources/icons/settings.svg"
-
-                    iconWidth: 24
-                    iconHeight: 24
+                    iconProperties: Variables.iconSettings24
 
                     onClicked: {
                         console.log("Settings button clicked")
@@ -180,10 +159,7 @@ Item {
 
                     cornerRadius: height / 2
 
-                    iconSvg: "qrc:/src/resources/icons/plus.svg"
-
-                    iconWidth: 21
-                    iconHeight: 24
+                    iconProperties: Variables.iconPlus24
 
                     onClicked: {
                         createFolderModal.showCreateFolder()

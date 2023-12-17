@@ -45,10 +45,7 @@ Item {
                 Layout.preferredHeight: 36
                 Layout.preferredWidth: height
 
-                iconHeight: 16
-                iconWidth: 16
-
-                iconSvg: "qrc:/src/resources/icons/edit.svg"
+                iconProperties: Variables.iconEdit16
 
                 backgroundColor: "transparent"
                 foregroundColor: Variables.foregroundColor
@@ -65,10 +62,7 @@ Item {
                 Layout.preferredHeight: 36
                 Layout.preferredWidth: height
 
-                iconHeight: 16
-                iconWidth: 14
-
-                iconSvg: "qrc:/src/resources/icons/delete.svg"
+                iconProperties: Variables.iconDelete16
 
                 backgroundColor: "transparent"
                 foregroundColor: Variables.foregroundColor

@@ -1,7 +1,5 @@
 import QtQuick
 import QtQuick.Window
-import QtQuick.Layouts
-import QtQuick.Controls as Controls
 
 import "RecordsList"
 

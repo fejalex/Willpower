@@ -39,10 +39,7 @@ Item {
 
             cornerRadius: 8
 
-            iconSvg: "qrc:/src/resources/icons/tick.svg"
-
-            iconWidth: 14
-            iconHeight: 16
+            iconProperties: Variables.iconTick16
 
             onClicked: {
                 console.log("Check box unset")

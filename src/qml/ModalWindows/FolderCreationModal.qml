@@ -178,9 +178,7 @@ Item {
                 foregroundColor: Variables.redAccentColor
                 backgroundColor: Variables.backgroundColor
 
-                iconSvg: "qrc:/src/resources/icons/delete.svg"
-                iconWidth: 14
-                iconHeight: 16
+                iconProperties: Variables.iconDelete16
 
                 text: "Delete folder"
                 font { family: Variables.generalFont; pixelSize: 16; weight: 600 }
