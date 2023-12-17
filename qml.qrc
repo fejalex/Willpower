@@ -36,5 +36,6 @@
         <file>src/qml/Reusable/NumberSelector.qml</file>
         <file>src/qml/ModalWindows/DeletionModal.qml</file>
         <file>src/qml/Reusable/IconProperties.qml</file>
+        <file>src/qml/RecordsList/TimerButtons.qml</file>
     </qresource>
 </RCC>

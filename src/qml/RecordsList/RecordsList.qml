@@ -10,9 +10,6 @@ import "../ModalWindows"
 Item {
     id: element
 
-    property bool isTimerRunning: false
-    property bool isTimerPaused: false
-
     anchors.fill: parent
 
     Rectangle {
@@ -98,80 +95,17 @@ Item {
             }
         }
 
-        Button {
-            id: playPauseButton
+        TimerButtons {
+            anchors { right: parent.right; bottom: parent.bottom }
 
-            height: 56
-            width: height
-
-            anchors { right: parent.right; bottom: parent.bottom; rightMargin: 16; bottomMargin: 16 }
-
-            backgroundColor: Variables.greenAccentColor
-
-            cornerRadius: height / 2
-
-            iconProperties: Variables.iconPlay24
-
-            onClicked: {
-                if(!element.isTimerRunning) {
-                    if(!element.isTimerPaused)
-                    {
-                        anchors.bottomMargin = 88
-                        stopButton.anchors.rightMargin = 16
-                    }
-
-                    element.isTimerRunning = true
-                    element.isTimerPaused = false
-
-                    backgroundColor = Variables.yellowAccentColor
-                    iconProperties = Variables.iconPause24
-                }
-                else {
-                    element.isTimerRunning = false
-                    element.isTimerPaused = true
-
-                    backgroundColor = Variables.greenAccentColor
-
-                    iconProperties = Variables.iconPlay24
-                }
+            onPlayClicked: {
+                console.log("Play clicked")
             }
-
-            Behavior on anchors.bottomMargin {
-                NumberAnimation {
-                    duration: 120
-                }
+            onPauseClicked: {
+                console.log("Pause clicked")
             }
-        }
-
-        Button {
-            id: stopButton
-
-            height: 56
-            width: height
-
-            anchors { right: parent.right; bottom: parent.bottom; rightMargin: -height; bottomMargin: 16 }
-
-            backgroundColor: Variables.redAccentColor
-
-            cornerRadius: height / 2
-
-            iconProperties: Variables.iconStop24
-
-            onClicked: {
-                element.isTimerRunning = false
-                element.isTimerPaused = false
-
-                playPauseButton.backgroundColor = Variables.greenAccentColor
-                playPauseButton.iconProperties = Variables.iconPlay24
-
-                playPauseButton.anchors.bottomMargin = 16
-                anchors.rightMargin = -height
-            }
-
-            Behavior on anchors.rightMargin {
-                NumberAnimation {
-                    duration: 120
-                }
+            onStopClicked: {
+                console.log("Stop clicked")
             }
         }
     }
