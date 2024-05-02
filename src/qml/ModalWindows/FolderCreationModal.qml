@@ -19,6 +19,7 @@ Item {
             PropertyChanges { target: confirmButton; text: "Create" }
             PropertyChanges { target: confirmButton; onClicked: {
                         console.log("Create folder clicked")
+                        element.close()
                     } }
             PropertyChanges { target: element; visible: true }
             PropertyChanges { target: checkboxEditable; visible: true }
@@ -37,6 +38,7 @@ Item {
             PropertyChanges { target: confirmButton; text: "Save" }
             PropertyChanges { target: confirmButton; onClicked: {
                         console.log("Save folder properties clicked")
+                        element.close()
                     } }
             PropertyChanges { target: element; visible: true }
             PropertyChanges { target: checkboxEditable; visible: false }
@@ -88,7 +90,6 @@ Item {
             Text {
                 id: modalTitle
 
-                text: "Create folder"
                 color: Variables.foregroundColor
                 font { family: Variables.generalFont; pixelSize: 16; weight: Font.Bold }
                 Layout.fillWidth: true
@@ -203,12 +204,7 @@ Item {
 
                     cornerRadius: 8
 
-                    text: "Create"
                     font { family: Variables.generalFont; pixelSize: 16 }
-
-                    onClicked: {
-                        console.log("Create folder clicked")
-                    }
                 }
 
                 Button {
