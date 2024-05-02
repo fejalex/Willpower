@@ -103,6 +103,8 @@ Item {
 
             height: 56 + padding * 2
 
+            property int maxButtonSize: (width - padding * 4) / 3
+
             RowLayout {
                 id: sidebarButtonsRow
                 anchors { fill: parent; margins: sidebarButtons.padding }
@@ -114,11 +116,9 @@ Item {
                 }
 
                 Button {
-                    id: themeSwitcher
-
                     property bool isLightThemeEnabled: false
 
-                    Layout.preferredHeight: 56
+                    Layout.preferredHeight: Math.min(56, sidebarButtons.maxButtonSize)
                     Layout.preferredWidth: height
 
                     backgroundColor: Variables.greyAccentColor
@@ -133,9 +133,7 @@ Item {
                 }
 
                 Button {
-                    id: settingsButton
-
-                    Layout.preferredHeight: 56
+                    Layout.preferredHeight: Math.min(56, sidebarButtons.maxButtonSize)
                     Layout.preferredWidth: height
 
                     backgroundColor: Variables.greyAccentColor
@@ -150,9 +148,7 @@ Item {
                 }
 
                 Button {
-                    id: createFolderButton
-
-                    Layout.preferredHeight: 56
+                    Layout.preferredHeight: Math.min(56, sidebarButtons.maxButtonSize)
                     Layout.preferredWidth: height
 
                     backgroundColor: Variables.greyAccentColor

@@ -6,9 +6,11 @@ import "RecordsList"
 Window {
     id: window
 
+    visible: true
+
     width: Variables.windowWidth
     height: Variables.windowHeight
-    visible: true
+
     title: Variables.applicationName
 
     RecordsList {
