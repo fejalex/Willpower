@@ -26,6 +26,7 @@ Item {
     // Additional colors.
     readonly property string fadeColor: "#000000"
     readonly property string textSelectionBgColor: "#4F6F9E"
+    readonly property string timeRecordShineColor: "#37354A"
 
     // SVG settings.
     readonly property int svgIconsStroke: 2

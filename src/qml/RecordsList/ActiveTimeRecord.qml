@@ -65,5 +65,16 @@ Item {
                 wrapMode: Text.WordWrap
             }
         }
+
+        gradient: shineAnimation.gradient
+
+        ShineAnimation {
+            id: shineAnimation
+
+            isRunning: element.visible
+
+            backgroundColor: Variables.accentBgColor
+            foregroundColor: Variables.timeRecordShineColor
+        }
     }
 }

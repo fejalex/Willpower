@@ -37,5 +37,6 @@
         <file>src/qml/ModalWindows/DeletionModal.qml</file>
         <file>src/qml/Reusable/IconProperties.qml</file>
         <file>src/qml/RecordsList/TimerButtons.qml</file>
+        <file>src/qml/RecordsList/ShineAnimation.qml</file>
     </qresource>
 </RCC>
