@@ -20,6 +20,16 @@ Item {
 
         color: isSelected ? Variables.accentBgColor : Variables.backgroundColor
 
+        MouseArea {
+            anchors.fill: parent
+
+            cursorShape: "PointingHandCursor"
+
+            onClicked: {
+                element.selected()
+            }
+        }
+
         RowLayout {
             anchors.fill: parent
             anchors.leftMargin: 15
@@ -49,16 +59,6 @@ Item {
                 onClicked: {
                     element.editClicked()
                 }
-            }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-
-            cursorShape: "PointingHandCursor"
-
-            onClicked: {
-                element.selected()
             }
         }
     }
