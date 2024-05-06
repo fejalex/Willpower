@@ -22,6 +22,9 @@ int main(int argc, char* argv[])
         },
         Qt::QueuedConnection);
 
+    qmlRegisterUncreatableType<wp::ActiveTimer>("ActiveTimer", 1, 0, "ActiveTimer",
+                                                "Access to active timer states enum.");
+
     wp::Database database;
 
     engine.rootContext()->setContextProperty("cpp_database", &database);

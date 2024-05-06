@@ -25,6 +25,13 @@ TimeRecord* RecordsFolder::getTimeRecordAt(const qint64 index)
     return item;
 }
 
+Q_INVOKABLE ActiveTimer* RecordsFolder::getActiveTimer()
+{
+    QQmlEngine::setObjectOwnership(&m_activeTimer, QQmlEngine::CppOwnership);
+
+    return &m_activeTimer;
+}
+
 int RecordsFolder::rowCount(const QModelIndex&) const
 {
     return static_cast<int>(m_timeRecords.size());

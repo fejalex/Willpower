@@ -3,6 +3,7 @@
 #include <QAbstractListModel>
 
 #include "TimeRecord.h"
+#include "ActiveTimer.h"
 
 namespace wp
 {
@@ -13,6 +14,7 @@ class RecordsFolder : public QAbstractListModel
 public:
     QString getName() const;
     TimeRecord* getTimeRecordAt(qint64 index);
+    Q_INVOKABLE ActiveTimer* getActiveTimer();
 
 public:
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
@@ -34,5 +36,6 @@ public:
 private:
     QString m_name;
     QList<TimeRecord> m_timeRecords;
+    ActiveTimer m_activeTimer;
 };
 } // namespace wp

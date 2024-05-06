@@ -1,13 +1,18 @@
 import QtQuick
 import QtQuick.Layouts
 
+import ActiveTimer
+
 import ".." // For using Variables.qml.
 import "../Reusable"
 
 Item {
     id: element
 
-    property bool isPaused: false
+    property int status: ActiveTimer.Stopped
+    property string text: "0000d 00h 00m 00s"
+
+    signal tick()
 
     implicitHeight: Math.max(36, timeLabel.height + 8)
 
@@ -23,7 +28,7 @@ Item {
             spacing: 0
 
             Item {
-                visible: !element.isPaused
+                visible: element.status === ActiveTimer.Running
 
                 width: 36
                 height: 36
@@ -38,7 +43,7 @@ Item {
             }
 
             Item {
-                visible: element.isPaused
+                visible: element.status === ActiveTimer.Paused
 
                 width: 36
                 height: 36
@@ -59,7 +64,7 @@ Item {
 
                 color: Variables.foregroundColor
                 font { family: Variables.monospaceFont; pixelSize: 16; }
-                text: "0000d 00h 01m 40s"
+                text: element.text
 
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -75,6 +80,17 @@ Item {
 
             backgroundColor: Variables.accentBgColor
             foregroundColor: Variables.timeRecordShineColor
+        }
+    }
+
+    Timer {
+        interval: 300
+        repeat: true
+        running: element.status === ActiveTimer.Running
+        triggeredOnStart: true
+
+        onTriggered: {
+            element.tick()
         }
     }
 }

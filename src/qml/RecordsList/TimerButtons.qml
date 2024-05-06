@@ -1,5 +1,7 @@
 import QtQuick
 
+import ActiveTimer
+
 import ".." // For using Variables.qml.
 import "../Reusable"
 
@@ -8,6 +10,8 @@ Item {
 
     property int buttonSize: 56
     property int edgeMargin: 16
+
+    property int status: ActiveTimer.Stopped
 
     signal playClicked()
     signal pauseClicked()
@@ -19,7 +23,7 @@ Item {
         height: element.buttonSize
         width: height
 
-        state: "PlayButton"
+        state: _.timerStatusToPlayState(element.status)
         states: [
             State {
                 name: "PlayButton"
@@ -28,8 +32,6 @@ Item {
                 PropertyChanges { target: playPauseButton; anchors.bottomMargin: element.edgeMargin }
                 PropertyChanges { target: playPauseButton; onClicked: {
                     element.playClicked()
-                    state = "PauseButton"
-                    stopButton.state = "Visible"
                 } }
             },
             State {
@@ -39,7 +41,6 @@ Item {
                 PropertyChanges { target: playPauseButton; anchors.bottomMargin: stopButton.anchors.bottomMargin + stopButton.height + element.edgeMargin }
                 PropertyChanges { target: playPauseButton; onClicked: {
                     element.pauseClicked()
-                    state = "UnpauseButton"
                 } }
             },
             State {
@@ -49,7 +50,6 @@ Item {
                 PropertyChanges { target: playPauseButton; anchors.bottomMargin: stopButton.anchors.bottomMargin + stopButton.height + element.edgeMargin }
                 PropertyChanges { target: playPauseButton; onClicked: {
                     element.playClicked()
-                    state = "PauseButton"
                 } }
             }
         ]
@@ -71,7 +71,7 @@ Item {
         height: element.buttonSize
         width: height
 
-        state: "Hidden"
+        state: _.timerStatusToStopState(element.status)
         states: [
             State {
                 name: "Visible"
@@ -91,13 +91,36 @@ Item {
 
         onClicked: {
             element.stopClicked()
-            state = "Hidden"
-            playPauseButton.state = "PlayButton"
         }
 
         Behavior on anchors.rightMargin {
             NumberAnimation {
                 duration: 120
+            }
+        }
+    }
+
+    Item {
+        id: _
+
+        function timerStatusToPlayState(status) {
+            switch(status) {
+                case ActiveTimer.Running:
+                    return "PauseButton";
+                case ActiveTimer.Paused:
+                    return "UnpauseButton";
+                default:
+                    return "PlayButton";
+            }
+        }
+
+        function timerStatusToStopState(status) {
+            switch(status) {
+                case ActiveTimer.Running:
+                case ActiveTimer.Paused:
+                    return "Visible";
+                default:
+                    return "Hidden";
             }
         }
     }

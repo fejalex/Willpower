@@ -8,12 +8,14 @@ SOURCES += \
         src/Database/FoldersList.cpp \
         src/Database/RecordsFolder.cpp \
         src/Database/TimeRecord.cpp \
+        src/Database/ActiveTimer.cpp \
 
 HEADERS += \
         src/Database/Database.h \
         src/Database/FoldersList.h \
         src/Database/RecordsFolder.h \
         src/Database/TimeRecord.h \
+        src/Database/ActiveTimer.h \
 
 RESOURCES += qml.qrc
 

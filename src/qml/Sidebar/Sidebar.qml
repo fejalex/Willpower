@@ -81,6 +81,7 @@ Item {
                         }
                         onSelected: {
                             element.currentFolder = index
+                            element.close()
                         }
                     }
                 }

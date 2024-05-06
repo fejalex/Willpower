@@ -2,6 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import ActiveTimer
+
 import ".." // For using Variables.qml.
 import "../Reusable"
 import "../Sidebar"
@@ -12,7 +14,19 @@ Item {
 
     anchors.fill: parent
 
-    readonly property int currentFolder: sidebar.currentFolder
+    Item {
+        id: _
+
+        function getCurrentFolder()
+        {
+            return cpp_database.getFoldersList().getFolderAt(sidebar.currentFolder);
+        }
+
+        function getActiveTimer()
+        {
+            return getCurrentFolder().getActiveTimer();
+        }
+    }
 
     Rectangle {
         anchors.fill: parent
@@ -52,15 +66,20 @@ Item {
                 id: timeRecords
 
                 ActiveTimeRecord {
+                    id: activeTimeRecord
+
                     Layout.fillWidth: true
-                }
-                ActiveTimeRecord {
-                    Layout.fillWidth: true
-                    isPaused: true
+
+                    visible: _.getActiveTimer().status !== ActiveTimer.Stopped
+                    status: _.getActiveTimer().status
+
+                    onTick: {
+                        text = _.getActiveTimer().getElapsedTimeText()
+                    }
                 }
 
                 Repeater {
-                    model: cpp_database.getFoldersList().getFolderAt(currentFolder)
+                    model: _.getCurrentFolder()
 
                     delegate: TimeRecord {
                         required property string textValue // Exported from C++
@@ -86,14 +105,16 @@ Item {
         TimerButtons {
             anchors { right: parent.right; bottom: parent.bottom }
 
+            status: _.getActiveTimer().status
+
             onPlayClicked: {
-                console.log("Play clicked")
+                _.getActiveTimer().start();
             }
             onPauseClicked: {
-                console.log("Pause clicked")
+                _.getActiveTimer().pause();
             }
             onStopClicked: {
-                console.log("Stop clicked")
+                _.getActiveTimer().stop();
             }
         }
     }
@@ -112,5 +133,9 @@ Item {
 
     Sidebar {
         id: sidebar
+
+        onCurrentFolderChanged: {
+            activeTimeRecord.tick();
+        }
     }
 }
