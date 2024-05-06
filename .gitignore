@@ -1,3 +1,5 @@
 Willpower.pro.user
 build/
 bin/
+.cache
+.vscode

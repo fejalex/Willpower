@@ -12,6 +12,8 @@ Item {
 
     visible: false
 
+    property int currentFolder: 0
+
     function show() {
         element.visible = true
     }
@@ -62,32 +64,24 @@ Item {
 
                 spacing: 0
 
-                FolderOption {
-                    Layout.fillWidth: true
-                    onEditClicked: {
-                        createFolderModal.showEditFolder(title)
-                    }
-                }
+                Repeater {
+                    model: cpp_database.getFoldersList()
 
-                FolderOption {
-                    Layout.fillWidth: true
-                    isSelected: true
-                    onEditClicked: {
-                        createFolderModal.showEditFolder(title)
-                    }
-                }
+                    delegate: FolderOption {
+                        required property int index
+                        required property string textValue // Exported from C++
 
-                FolderOption {
-                    Layout.fillWidth: true
-                    onEditClicked: {
-                        createFolderModal.showEditFolder(title)
-                    }
-                }
+                        Layout.fillWidth: true
 
-                FolderOption {
-                    Layout.fillWidth: true
-                    onEditClicked: {
-                        createFolderModal.showEditFolder(title)
+                        title: textValue
+                        isSelected: index == element.currentFolder
+                        
+                        onEditClicked: {
+                            createFolderModal.showEditFolder(title)
+                        }
+                        onSelected: {
+                            element.currentFolder = index
+                        }
                     }
                 }
             }

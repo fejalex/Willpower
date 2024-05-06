@@ -10,6 +10,8 @@ Item {
     property bool isEditable: true
     property bool isDeletable: true
 
+    property string text: "0000d 00h 00m 00s"
+
     implicitHeight: Math.max(36, timeLabel.height + 8)
 
     signal editClicked()
@@ -33,7 +35,7 @@ Item {
 
                 color: Variables.foregroundColor
                 font { family: Variables.monospaceFont; pixelSize: 16; }
-                text: "0000d 00h 01m 40s"
+                text: element.text
 
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap

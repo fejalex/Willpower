@@ -3,7 +3,17 @@ QT += quick
 CONFIG += c++17
 
 SOURCES += \
-        src/Main.cpp
+        src/Main.cpp \
+        src/Database/Database.cpp \
+        src/Database/FoldersList.cpp \
+        src/Database/RecordsFolder.cpp \
+        src/Database/TimeRecord.cpp \
+
+HEADERS += \
+        src/Database/Database.h \
+        src/Database/FoldersList.h \
+        src/Database/RecordsFolder.h \
+        src/Database/TimeRecord.h \
 
 RESOURCES += qml.qrc
 

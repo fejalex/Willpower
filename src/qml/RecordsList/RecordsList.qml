@@ -12,6 +12,8 @@ Item {
 
     anchors.fill: parent
 
+    readonly property int currentFolder: sidebar.currentFolder
+
     Rectangle {
         anchors.fill: parent
         color: Variables.backgroundColor
@@ -57,35 +59,21 @@ Item {
                     isPaused: true
                 }
 
-                TimeRecord {
-                    Layout.fillWidth: true
+                Repeater {
+                    model: cpp_database.getFoldersList().getFolderAt(currentFolder)
 
-                    onDeleteClicked: {
-                        recordDeletionModal.display()
+                    delegate: TimeRecord {
+                        required property string textValue // Exported from C++
+
+                        Layout.fillWidth: true
+
+                        text: textValue
+                        isEditable: false
+                        isDeletable: false
                     }
                 }
-                TimeRecord {
-                    Layout.fillWidth: true
-                    isEditable: false
 
-                    onDeleteClicked: {
-                        recordDeletionModal.display()
-                    }
-                }
-                TimeRecord {
-                    Layout.fillWidth: true
-                    isDeletable: false
-
-                    onDeleteClicked: {
-                        recordDeletionModal.display()
-                    }
-                }
-                TimeRecord {
-                    Layout.fillWidth: true
-                    isEditable: false
-                    isDeletable: false
-                }
-
+                // For timer buttons to not overlap time records.
                 Rectangle {
                     Layout.fillWidth: true
                     height: 80

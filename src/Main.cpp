@@ -1,5 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+
+#include "Database/Database.h"
 
 int main(int argc, char* argv[])
 {
@@ -11,7 +14,7 @@ int main(int argc, char* argv[])
 
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated, &app,
-        [url](QObject* obj, const QUrl& objUrl) {
+        [url](const QObject* const obj, const QUrl& objUrl) {
             if (obj == nullptr && url == objUrl)
             {
                 QCoreApplication::exit(-1);
@@ -19,7 +22,11 @@ int main(int argc, char* argv[])
         },
         Qt::QueuedConnection);
 
+    wp::Database database;
+
+    engine.rootContext()->setContextProperty("cpp_database", &database);
+
     engine.load(url);
 
-    return app.exec();
+    return QGuiApplication::exec();
 }

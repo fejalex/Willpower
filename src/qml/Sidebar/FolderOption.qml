@@ -9,10 +9,11 @@ Item {
 
     implicitHeight: Math.max(48, nameLabel.height + 8)
 
-    property alias title: nameLabel.text
+    property string title: "Default"
     property bool isSelected: false
 
     signal editClicked()
+    signal selected()
 
     Rectangle {
         anchors.fill: parent
@@ -30,7 +31,7 @@ Item {
 
                 color: Variables.foregroundColor
                 font { family: Variables.generalFont; pixelSize: 18; }
-                text: "Default"
+                text: element.title
 
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
@@ -48,6 +49,16 @@ Item {
                 onClicked: {
                     element.editClicked()
                 }
+            }
+        }
+
+        MouseArea {
+            anchors.fill: parent
+
+            cursorShape: "PointingHandCursor"
+
+            onClicked: {
+                element.selected()
             }
         }
     }
