@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "Database/Database.h"
+#include "Models/Database.h"
 
 int main(int argc, char* argv[])
 {
@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
     QQmlApplicationEngine engine;
 
-    const QUrl url(QStringLiteral("qrc:/src/qml/Main.qml"));
+    const QUrl url(QStringLiteral("qrc:/src/View/Main.qml"));
 
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated, &app,

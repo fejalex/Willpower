@@ -1,42 +1,56 @@
 <RCC>
     <qresource prefix="/">
-        <file>src/qml/Main.qml</file>
-        <file>src/qml/Variables.qml</file>
-        <file>src/qml/qmldir</file>
-        <file>src/qml/Reusable/TopBar.qml</file>
-        <file>src/qml/Reusable/Icon.qml</file>
-        <file>src/qml/Reusable/Button.qml</file>
-        <file>src/resources/fonts/Nunito.ttf</file>
-        <file>src/resources/fonts/JetBrainsMono.ttf</file>
-        <file>src/resources/icons/play.svg</file>
-        <file>src/resources/icons/menu.svg</file>
-        <file>src/qml/RecordsList/TimeRecord.qml</file>
-        <file>src/resources/icons/chevron-down.svg</file>
-        <file>src/resources/icons/chevron-left.svg</file>
-        <file>src/resources/icons/chevron-right.svg</file>
-        <file>src/resources/icons/chevron-up.svg</file>
-        <file>src/resources/icons/delete.svg</file>
-        <file>src/resources/icons/edit.svg</file>
-        <file>src/resources/icons/pause.svg</file>
-        <file>src/resources/icons/plus.svg</file>
-        <file>src/resources/icons/stop.svg</file>
-        <file>src/resources/icons/tick.svg</file>
-        <file>src/qml/RecordsList/ActiveTimeRecord.qml</file>
-        <file>src/resources/icons/clock.svg</file>
-        <file>src/resources/icons/close.svg</file>
-        <file>src/qml/Sidebar/FolderOption.qml</file>
-        <file>src/qml/Reusable/LabeledCheckbox.qml</file>
-        <file>src/resources/icons/sun.svg</file>
-        <file>src/resources/icons/moon.svg</file>
-        <file>src/resources/icons/settings.svg</file>
-        <file>src/qml/Reusable/Fade.qml</file>
-        <file>src/qml/ModalWindows/FolderCreationModal.qml</file>
-        <file>src/qml/Sidebar/Sidebar.qml</file>
-        <file>src/qml/RecordsList/RecordsList.qml</file>
-        <file>src/qml/Reusable/NumberSelector.qml</file>
-        <file>src/qml/ModalWindows/DeletionModal.qml</file>
-        <file>src/qml/Reusable/IconProperties.qml</file>
-        <file>src/qml/RecordsList/TimerButtons.qml</file>
-        <file>src/qml/RecordsList/ShineAnimation.qml</file>
+
+        <file>src/View/qmldir</file>
+        <file>src/View/Variables.qml</file>
+
+        <file>src/View/Main.qml</file>
+
+        <file>src/View/Reusable/IconProperties.qml</file>
+        <file>src/View/Reusable/Icon.qml</file>
+        <file>src/View/Reusable/Button.qml</file>
+        <file>src/View/Reusable/Fade.qml</file>
+        <file>src/View/Reusable/LabeledCheckbox.qml</file>
+        <file>src/View/Reusable/NumberSelector.qml</file>
+        <file>src/View/Reusable/TopBar.qml</file>
+
+        <file>src/View/RecordsList/TimeRecord.qml</file>
+        <file>src/View/RecordsList/ActiveTimeRecord.qml</file>
+        <file>src/View/RecordsList/TimerButtons.qml</file>
+        <file>src/View/RecordsList/ShineAnimation.qml</file>
+        <file>src/View/RecordsList/RecordsList.qml</file>
+
+        <file>src/View/Sidebar/FolderOption.qml</file>
+        <file>src/View/Sidebar/Sidebar.qml</file>
+
+        <file>src/View/ModalWindows/DeletionModal.qml</file>
+        <file>src/View/ModalWindows/FolderCreationModal.qml</file>
+
+
+        <file>src/Resources/Fonts/Nunito.ttf</file>
+        <file>src/Resources/Fonts/JetBrainsMono.ttf</file>
+
+
+        <file>src/Resources/Icons/edit.svg</file>
+        <file>src/Resources/Icons/delete.svg</file>
+
+        <file>src/Resources/Icons/clock.svg</file>
+        <file>src/Resources/Icons/pause.svg</file>
+
+        <file>src/Resources/Icons/tick.svg</file>
+        <file>src/Resources/Icons/chevron-up.svg</file>
+        <file>src/Resources/Icons/chevron-down.svg</file>
+
+        <file>src/Resources/Icons/menu.svg</file>
+        <file>src/Resources/Icons/close.svg</file>
+
+        <file>src/Resources/Icons/play.svg</file>
+        <file>src/Resources/Icons/stop.svg</file>
+
+        <file>src/Resources/Icons/sun.svg</file>
+        <file>src/Resources/Icons/moon.svg</file>
+        <file>src/Resources/Icons/plus.svg</file>
+        <file>src/Resources/Icons/settings.svg</file>
+
     </qresource>
 </RCC>

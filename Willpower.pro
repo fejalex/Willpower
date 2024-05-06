@@ -4,18 +4,18 @@ CONFIG += c++17
 
 SOURCES += \
         src/Main.cpp \
-        src/Database/Database.cpp \
-        src/Database/FoldersList.cpp \
-        src/Database/RecordsFolder.cpp \
-        src/Database/TimeRecord.cpp \
-        src/Database/ActiveTimer.cpp \
+        src/Models/Database.cpp \
+        src/Models/FoldersList.cpp \
+        src/Models/RecordsFolder.cpp \
+        src/Models/TimeRecord.cpp \
+        src/Models/ActiveTimer.cpp \
 
 HEADERS += \
-        src/Database/Database.h \
-        src/Database/FoldersList.h \
-        src/Database/RecordsFolder.h \
-        src/Database/TimeRecord.h \
-        src/Database/ActiveTimer.h \
+        src/Models/Database.h \
+        src/Models/FoldersList.h \
+        src/Models/RecordsFolder.h \
+        src/Models/TimeRecord.h \
+        src/Models/ActiveTimer.h \
 
 RESOURCES += qml.qrc
 
