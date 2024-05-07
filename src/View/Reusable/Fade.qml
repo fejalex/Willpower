@@ -9,7 +9,7 @@ Rectangle {
 
     color: Variables.fadeColor
 
-    opacity: 0.8
+    opacity: Variables.fadePower
 
     signal clicked()
 

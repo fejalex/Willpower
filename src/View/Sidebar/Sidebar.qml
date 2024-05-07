@@ -13,20 +13,34 @@ Item {
     visible: false
 
     property int currentFolder: 0
+    property double sidebarWidth: parent.width * 0.8
 
     function show() {
-        element.visible = true
+        showAnimation.running = true;
     }
 
     function close() {
-        element.visible = false
+        hideAnimation.running = true;
+    }
+    
+    Item {
+        id: _
+
+        property double showingCompletion: 0
     }
 
-    Fade { }
+    Fade {
+        id: fade
+
+        opacity: _.showingCompletion * Variables.fadePower
+    }
 
     Rectangle {
         id: sidebar
-        anchors { fill: parent; rightMargin: parent.width * 0.2 }
+        anchors { left: parent.left; top: parent.top; bottom: parent.bottom;
+                  leftMargin: (1 - _.showingCompletion) * -element.sidebarWidth }
+
+        width: element.sidebarWidth
 
         color: Variables.backgroundColor
 
@@ -157,6 +171,48 @@ Item {
                     }
                 }
             }
+        }
+
+        PropertyAnimation {
+            id: hideAnimation
+            duration: 200
+
+            target: _
+            property: "showingCompletion"
+            to: 0
+
+            onRunningChanged: {
+                if(!running)
+                {
+                    element.visible = false
+                }
+            }
+        }
+
+        PropertyAnimation {
+            id: showAnimation
+            duration: 200
+
+            target: _
+            property: "showingCompletion"
+            to: 1
+
+            onRunningChanged: {
+                if(running)
+                {
+                    element.visible = true
+                }
+            }
+        }
+    }
+
+    MouseArea {
+        id: closer
+
+        anchors { left: sidebar.right; right: parent.right; top: parent.top; bottom: parent.bottom }
+
+        onClicked: {
+            element.close()
         }
     }
 

@@ -31,6 +31,9 @@ Item {
     // SVG settings.
     readonly property int svgIconsStroke: 2
 
+    // Other settings.
+    readonly property double fadePower: 0.7
+
     // Font loaders
     FontLoader {
         id: nunitoLoader
