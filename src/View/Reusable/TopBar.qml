@@ -47,6 +47,7 @@ Item {
 
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
+                Layout.topMargin: 1
 
                 color: element.foregroundColor
 
