@@ -61,21 +61,63 @@ Item {
 
             boundsBehavior: Flickable.StopAtBounds
 
+            ActiveTimeRecord {
+                id: activeTimeRecord
+
+                readonly property int hidingMargin: -(height + timeRecords.spacing)
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    leftMargin: 8
+                    rightMargin: 8
+
+                    top: parent.top
+                    topMargin: hidingMargin
+                }
+
+                visible: _.getActiveTimer().status !== ActiveTimer.Stopped
+                status: _.getActiveTimer().status
+
+                onTick: {
+                    text = _.getActiveTimer().getElapsedTimeText()
+                }
+
+                onVisibleChanged: {
+                    if(visible)
+                    {
+                        showActiveTimeRecord.running = true;
+                    }
+                    else
+                    {
+                        showActiveTimeRecord.running = false;
+                        anchors.topMargin = Qt.binding(function() { return hidingMargin })
+                    }
+                }
+
+                PropertyAnimation {
+                    id: showActiveTimeRecord
+
+                    target: activeTimeRecord
+                    property: "anchors.topMargin"
+
+                    to: 0
+                    duration: 200
+                    easing.type: Easing.OutCubic
+                }
+            }
+
             ColumnLayout {
-                anchors { left: parent.left; right: parent.right; leftMargin: 8; rightMargin: 8 }
                 id: timeRecords
 
-                ActiveTimeRecord {
-                    id: activeTimeRecord
+                anchors {
+                    top: activeTimeRecord.bottom
+                    topMargin: spacing
 
-                    Layout.fillWidth: true
-
-                    visible: _.getActiveTimer().status !== ActiveTimer.Stopped
-                    status: _.getActiveTimer().status
-
-                    onTick: {
-                        text = _.getActiveTimer().getElapsedTimeText()
-                    }
+                    left: parent.left
+                    right: parent.right
+                    leftMargin: 8
+                    rightMargin: 8
                 }
 
                 Repeater {
