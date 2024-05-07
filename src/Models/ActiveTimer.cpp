@@ -2,14 +2,12 @@
 
 #include <QDateTime>
 
-#include "Duration.h"
-
 namespace wp
 {
 
-static std::chrono::milliseconds now()
+static Milliseconds now()
 {
-    return std::chrono::milliseconds {QDateTime::currentMSecsSinceEpoch()};
+    return Milliseconds {QDateTime::currentMSecsSinceEpoch()};
 }
 
 ActiveTimer::Status ActiveTimer::getStatus() const
@@ -19,7 +17,7 @@ ActiveTimer::Status ActiveTimer::getStatus() const
 
 QString ActiveTimer::getElapsedTimeText() const
 {
-    std::chrono::milliseconds milliseconds;
+    Milliseconds milliseconds;
 
     if (m_status == Status::Paused)
     {

@@ -63,10 +63,10 @@ RecordsFolder::RecordsFolder(const QStringView name, QObject* const parent)
     , m_name(name.toString())
 {
     // TODO: Remove this initialization which was created for testing purposes.
-    m_timeRecords.emplace_back(std::chrono::seconds {5});
-    m_timeRecords.emplace_back(std::chrono::seconds {2});
-    m_timeRecords.emplace_back(std::chrono::seconds {3});
-    m_timeRecords.emplace_back(std::chrono::seconds {7});
+    m_timeRecords.emplace_back(Seconds {5});
+    m_timeRecords.emplace_back(Seconds {2});
+    m_timeRecords.emplace_back(Seconds {3});
+    m_timeRecords.emplace_back(Seconds {7});
 }
 
 RecordsFolder::RecordsFolder(const RecordsFolder& other) noexcept

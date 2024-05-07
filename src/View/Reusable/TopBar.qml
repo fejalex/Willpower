@@ -50,7 +50,7 @@ Item {
 
                 color: element.foregroundColor
 
-                font { family: Variables.generalFont; pixelSize: 20; weight: Font.DemiBold }
+                font { family: Variables.generalFont; pixelSize: 20; weight: Font.Bold }
 
                 text: element.title
 

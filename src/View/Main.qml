@@ -13,6 +13,8 @@ Window {
 
     title: Variables.applicationName
 
+    color: Variables.backgroundColor
+
     RecordsList {
         id: recordsList
     }

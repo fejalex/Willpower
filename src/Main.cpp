@@ -1,12 +1,26 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QQuickStyle>
+
+#ifdef Q_OS_ANDROID
+    #include <QJniObject>
+    #include <QColor>
+#endif // Q_OS_ANDROID
 
 #include "Models/Database.h"
 
 int main(int argc, char* argv[])
 {
     QGuiApplication app(argc, argv);
+
+    QQuickStyle::setStyle("Basic");
+
+#ifdef Q_OS_ANDROID
+    QJniObject activity = QNativeInterface::QAndroidApplication::context();
+    QJniObject window = activity.callObjectMethod("getWindow", "()Landroid/view/Window;");
+    window.callMethod<void>("setStatusBarColor", "(I)V", QColor(0x22212c).rgba());
+#endif // Q_OS_ANDROID
 
     QQmlApplicationEngine engine;
 

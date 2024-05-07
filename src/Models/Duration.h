@@ -3,20 +3,21 @@
 #include <QString>
 #include <chrono>
 
-namespace std::chrono
-{
-
-using days = std::chrono::duration<int64_t, std::ratio<60 * 60 * 24>>;
-
-} // namespace std::chrono
-
 namespace wp
 {
 
+using DurationInt = qint64;
+
+using Days = std::chrono::duration<DurationInt, std::ratio<60 * 60 * 24>>;
+using Hours = std::chrono::duration<DurationInt, std::ratio<60 * 60>>;
+using Minutes = std::chrono::duration<DurationInt, std::ratio<60>>;
+using Seconds = std::chrono::duration<DurationInt>;
+using Milliseconds = std::chrono::duration<DurationInt, std::milli>;
+
 template<typename ResultDuration, typename Ratio>
-ResultDuration extract(std::chrono::duration<int64_t, Ratio>& duration)
+ResultDuration extract(std::chrono::duration<DurationInt, Ratio>& duration)
 {
-    using InputDuration = std::chrono::duration<int64_t, Ratio>;
+    using InputDuration = std::chrono::duration<DurationInt, Ratio>;
 
     const ResultDuration result = std::chrono::duration_cast<ResultDuration>(duration);
     duration -= std::chrono::duration_cast<InputDuration>(result);
@@ -25,15 +26,15 @@ ResultDuration extract(std::chrono::duration<int64_t, Ratio>& duration)
 }
 
 template<typename Ratio>
-QString durationToString(std::chrono::duration<int64_t, Ratio> duration)
+QString durationToString(std::chrono::duration<DurationInt, Ratio> duration)
 {
-    const auto days = extract<std::chrono::days>(duration).count();
-    const auto hours = extract<std::chrono::hours>(duration).count();
-    const auto minutes = extract<std::chrono::minutes>(duration).count();
-    const auto seconds = extract<std::chrono::seconds>(duration).count();
+    const auto days = extract<Days>(duration).count();
+    const auto hours = extract<Hours>(duration).count();
+    const auto minutes = extract<Minutes>(duration).count();
+    const auto seconds = extract<Seconds>(duration).count();
 
-    return QString::asprintf("%0*ldd %0*ldh %0*ldm %0*lds", 3, days, 2, hours, 2, minutes,
-                             2, seconds);
+    return QString::asprintf("%0*lldd %0*lldh %0*lldm %0*llds", 3, days, 2, hours, 2,
+                             minutes, 2, seconds);
 }
 
 } // namespace wp

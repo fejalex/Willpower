@@ -1,4 +1,5 @@
-QT += quick
+QT += quick \
+      quickcontrols2 \ # For QQuickStyle.
 
 CONFIG += c++17
 
@@ -20,7 +21,14 @@ HEADERS += \
 
 RESOURCES += qml.qrc
 
+OTHER_FILES += android/AndroidManifest.xml
+
 # Default generated rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/build
 else: unix:!android: target.path = /opt/$${TARGET}/build
 !isEmpty(target.path): INSTALLS += target
+
+contains(ANDROID_TARGET_ARCH,arm64-v8a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}

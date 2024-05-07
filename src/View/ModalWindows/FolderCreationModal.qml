@@ -18,8 +18,8 @@ Item {
             PropertyChanges { target: modalTitle; text: "Create folder" }
             PropertyChanges { target: confirmButton; text: "Create" }
             PropertyChanges { target: confirmButton; onClicked: {
-                        console.log("Create folder clicked")
-                        element.close()
+                        console.log("Create folder clicked");
+                        element.close();
                     } }
             PropertyChanges { target: element; visible: true }
             PropertyChanges { target: checkboxEditable; visible: true }
@@ -37,8 +37,8 @@ Item {
             PropertyChanges { target: modalTitle; text: "Edit folder" }
             PropertyChanges { target: confirmButton; text: "Save" }
             PropertyChanges { target: confirmButton; onClicked: {
-                        console.log("Save folder properties clicked")
-                        element.close()
+                        console.log("Save folder properties clicked");
+                        element.close();
                     } }
             PropertyChanges { target: element; visible: true }
             PropertyChanges { target: checkboxEditable; visible: false }
@@ -61,6 +61,7 @@ Item {
     }
 
     function close() {
+        folderNameTextField.focus = false;
         element.state = ""
     }
 
@@ -106,6 +107,8 @@ Item {
 
                 leftPadding: 12
                 rightPadding: 12
+
+                focus: false
 
                 placeholderText: "Folder title"
 
@@ -219,7 +222,7 @@ Item {
                     font { family: Variables.generalFont; pixelSize: 16 }
 
                     onClicked: {
-                        element.close()
+                        element.close();
                     }
                 }
             }
@@ -230,12 +233,12 @@ Item {
         id: folderDeletionModal
 
         function display() {
-            show("Are you sure that you want to delete the folder?")
+            show("Are you sure that you want to delete the folder?");
         }
 
         onDeleteClicked: {
-            console.log("Delete folder clicked")
-            element.close()
+            console.log("Delete folder clicked");
+            element.close();
         }
     }
 }

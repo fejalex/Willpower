@@ -2,6 +2,8 @@
 
 #include <QObject>
 
+#include "Duration.h"
+
 namespace wp
 {
 
@@ -44,8 +46,8 @@ private:
     void setStatus(Status status);
 
 private:
-    std::chrono::milliseconds m_startTime {0};
-    std::chrono::milliseconds m_pauseTime {0};
+    Milliseconds m_startTime {0};
+    Milliseconds m_pauseTime {0};
     Status m_status {Status::Stopped};
 };
 

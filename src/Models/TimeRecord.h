@@ -2,6 +2,8 @@
 
 #include <QObject>
 
+#include "Duration.h"
+
 namespace wp
 {
 class TimeRecord : public QObject
@@ -9,13 +11,12 @@ class TimeRecord : public QObject
     Q_OBJECT
 
 public:
-    void setValue(std::chrono::seconds value);
+    void setValue(Seconds value);
 
     QString getTimeText() const;
 
 public:
-    explicit TimeRecord(std::chrono::seconds initialValue = std::chrono::seconds(0),
-                        QObject* parent = nullptr);
+    explicit TimeRecord(Seconds initialValue = Seconds(0), QObject* parent = nullptr);
     ~TimeRecord() override = default;
 
     TimeRecord(const TimeRecord& other) noexcept;
@@ -25,7 +26,7 @@ public:
     TimeRecord& operator=(TimeRecord&& other) noexcept;
 
 private:
-    std::chrono::seconds m_value {0};
+    Seconds m_value {0};
 };
 
 } // namespace wp
