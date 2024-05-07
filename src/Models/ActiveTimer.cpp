@@ -15,20 +15,21 @@ ActiveTimer::Status ActiveTimer::getStatus() const
     return m_status;
 }
 
-QString ActiveTimer::getElapsedTimeText() const
+Milliseconds ActiveTimer::getElapsedTime() const
 {
-    Milliseconds milliseconds;
-
     if (m_status == Status::Paused)
     {
-        milliseconds = m_pauseTime - m_startTime;
+        return m_pauseTime - m_startTime;
     }
     else
     {
-        milliseconds = now() - m_startTime;
+        return now() - m_startTime;
     }
+}
 
-    return durationToString(milliseconds);
+QString ActiveTimer::getElapsedTimeText() const
+{
+    return durationToString(getElapsedTime());
 }
 
 void ActiveTimer::start()
@@ -51,9 +52,14 @@ void ActiveTimer::pause()
     setStatus(Status::Paused);
 }
 
-void ActiveTimer::stop()
+DurationInt ActiveTimer::stop()
 {
+    const auto elapsedTime
+        = std::chrono::duration_cast<Seconds>(getElapsedTime()).count();
+
     setStatus(Status::Stopped);
+
+    return elapsedTime;
 }
 
 ActiveTimer::ActiveTimer(QObject* const parent)

@@ -15,6 +15,7 @@ public:
     QString getName() const;
     TimeRecord* getTimeRecordAt(qint64 index);
     Q_INVOKABLE ActiveTimer* getActiveTimer();
+    Q_INVOKABLE void appendTimeRecord(DurationInt seconds);
 
 public:
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;

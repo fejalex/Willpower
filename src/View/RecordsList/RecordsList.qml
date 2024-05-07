@@ -137,7 +137,13 @@ Item {
                 // For timer buttons to not overlap time records.
                 Rectangle {
                     Layout.fillWidth: true
-                    height: 80
+
+                    // I'm sorry for this hell.
+                    implicitHeight: activeTimeRecord.visible ?
+                                        timerButtons.buttonSize * 2 + timerButtons.edgeMargin * 3
+                                            - timeRecords.spacing - activeTimeRecord.hidingMargin :
+                                        timerButtons.buttonSize + timerButtons.edgeMargin * 2
+                                            - timeRecords.spacing
 
                     color: Variables.backgroundColor
                 }
@@ -145,6 +151,8 @@ Item {
         }
 
         TimerButtons {
+            id: timerButtons
+
             anchors { right: parent.right; bottom: parent.bottom }
 
             status: _.getActiveTimer().status
@@ -156,7 +164,8 @@ Item {
                 _.getActiveTimer().pause();
             }
             onStopClicked: {
-                _.getActiveTimer().stop();
+                let elapsedSeconds = _.getActiveTimer().stop();
+                _.getCurrentFolder().appendTimeRecord(elapsedSeconds);
             }
         }
     }

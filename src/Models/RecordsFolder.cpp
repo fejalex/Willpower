@@ -25,11 +25,18 @@ TimeRecord* RecordsFolder::getTimeRecordAt(const qint64 index)
     return item;
 }
 
-Q_INVOKABLE ActiveTimer* RecordsFolder::getActiveTimer()
+ActiveTimer* RecordsFolder::getActiveTimer()
 {
     QQmlEngine::setObjectOwnership(&m_activeTimer, QQmlEngine::CppOwnership);
 
     return &m_activeTimer;
+}
+
+void RecordsFolder::appendTimeRecord(const DurationInt seconds)
+{
+    beginInsertRows(QModelIndex(), 0, 0);
+    m_timeRecords.emplace_back(Seconds {seconds});
+    endInsertRows();
 }
 
 int RecordsFolder::rowCount(const QModelIndex&) const
@@ -44,7 +51,10 @@ QVariant RecordsFolder::data(const QModelIndex& index, const int role) const
         return QVariant {};
     }
 
-    return m_timeRecords.at(index.row()).getTimeText();
+    // Reversing index to show the most recently added entries first;
+    auto it = m_timeRecords.crbegin();
+    std::advance(it, index.row());
+    return it->getTimeText();
 }
 
 QHash<int, QByteArray> RecordsFolder::roleNames() const

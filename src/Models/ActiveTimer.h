@@ -23,11 +23,14 @@ public:
     Q_ENUM(Status)
 
     Q_INVOKABLE Status getStatus() const;
+
+    Milliseconds getElapsedTime() const;
     Q_INVOKABLE QString getElapsedTimeText() const;
 
     Q_INVOKABLE void start();
     Q_INVOKABLE void pause();
-    Q_INVOKABLE void stop();
+    /// @returns elapsed seconds.
+    Q_INVOKABLE DurationInt stop();
 
 signals:
     void statusChanged();
