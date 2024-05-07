@@ -135,7 +135,7 @@ Item {
         id: sidebar
 
         onCurrentFolderChanged: {
-            activeTimeRecord.tick();
+            activeTimeRecord.refresh();
         }
     }
 }

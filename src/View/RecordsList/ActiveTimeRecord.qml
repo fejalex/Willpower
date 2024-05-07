@@ -14,6 +14,11 @@ Item {
 
     signal tick()
 
+    function refresh()
+    {
+        tick();
+    }
+
     implicitHeight: Math.max(36, timeLabel.height + 8)
 
     Rectangle {
@@ -90,6 +95,10 @@ Item {
         triggeredOnStart: true
 
         onTriggered: {
+            element.tick()
+        }
+
+        onRunningChanged: {
             element.tick()
         }
     }
