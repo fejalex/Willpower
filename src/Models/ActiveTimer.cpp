@@ -2,12 +2,14 @@
 
 #include <QDateTime>
 
+#include "Duration.h"
+
 namespace wp
 {
 
-ActiveTimer::Milliseconds now()
+static std::chrono::milliseconds now()
 {
-    return QDateTime::currentMSecsSinceEpoch();
+    return std::chrono::milliseconds {QDateTime::currentMSecsSinceEpoch()};
 }
 
 ActiveTimer::Status ActiveTimer::getStatus() const
@@ -17,11 +19,11 @@ ActiveTimer::Status ActiveTimer::getStatus() const
 
 QString ActiveTimer::getElapsedTimeText() const
 {
-    ActiveTimer::Milliseconds milliseconds;
+    std::chrono::milliseconds milliseconds;
 
     if (m_status == Status::Paused)
     {
-        auto currentTime = now();
+        const auto currentTime = now();
         milliseconds = (currentTime - m_startTime) - (currentTime - m_pauseTime);
     }
     else
@@ -29,8 +31,7 @@ QString ActiveTimer::getElapsedTimeText() const
         milliseconds = now() - m_startTime;
     }
 
-    // TODO: Replace with actual converting code.
-    return QString("0000d 00h 00m 0%1s").arg(milliseconds / 1000);
+    return durationToString(milliseconds);
 }
 
 void ActiveTimer::start()

@@ -9,14 +9,13 @@ class TimeRecord : public QObject
     Q_OBJECT
 
 public:
-    using Seconds = qint64;
-
-    void setValue(Seconds value);
+    void setValue(std::chrono::seconds value);
 
     QString getTimeText() const;
 
 public:
-    explicit TimeRecord(Seconds initialValue = 0, QObject* parent = nullptr);
+    explicit TimeRecord(std::chrono::seconds initialValue = std::chrono::seconds(0),
+                        QObject* parent = nullptr);
     ~TimeRecord() override = default;
 
     TimeRecord(const TimeRecord& other) noexcept;
@@ -26,7 +25,7 @@ public:
     TimeRecord& operator=(TimeRecord&& other) noexcept;
 
 private:
-    Seconds m_value {0};
+    std::chrono::seconds m_value {0};
 };
 
 } // namespace wp

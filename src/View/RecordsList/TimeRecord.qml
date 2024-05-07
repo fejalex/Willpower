@@ -10,7 +10,7 @@ Item {
     property bool isEditable: true
     property bool isDeletable: true
 
-    property string text: "0000d 00h 00m 00s"
+    property string text: "000d 00h 00m 00s"
 
     implicitHeight: Math.max(36, timeLabel.height + 8)
 

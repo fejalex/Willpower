@@ -12,8 +12,6 @@ class ActiveTimer : public QObject
     Q_PROPERTY(Status status READ getStatus NOTIFY statusChanged)
 
 public:
-    using Milliseconds = qint64;
-
     enum class Status
     {
         Stopped,
@@ -46,8 +44,8 @@ private:
     void setStatus(Status status);
 
 private:
-    Milliseconds m_startTime {0};
-    Milliseconds m_pauseTime {0};
+    std::chrono::milliseconds m_startTime {0};
+    std::chrono::milliseconds m_pauseTime {0};
     Status m_status {Status::Stopped};
 };
 

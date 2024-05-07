@@ -10,7 +10,7 @@ Item {
     id: element
 
     property int status: ActiveTimer.Stopped
-    property string text: "0000d 00h 00m 00s"
+    property string text: "000d 00h 00m 00s"
 
     signal tick()
 

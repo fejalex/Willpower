@@ -16,6 +16,7 @@ HEADERS += \
         src/Models/RecordsFolder.h \
         src/Models/TimeRecord.h \
         src/Models/ActiveTimer.h \
+        src/Models/Duration.h \
 
 RESOURCES += qml.qrc
 

@@ -47,7 +47,7 @@ FoldersList::FoldersList(QObject* const parent)
     // TODO: Remove this initialization which was created for testing purposes.
     m_recordsFolders.emplace_back(u"Hello");
     m_recordsFolders.emplace_back(u"World");
-    m_recordsFolders.back().getTimeRecordAt(0)->setValue(0);
+    m_recordsFolders.back().getTimeRecordAt(0)->setValue(std::chrono::seconds {0});
 };
 
 } // namespace wp

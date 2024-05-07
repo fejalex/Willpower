@@ -1,20 +1,21 @@
 #include "TimeRecord.h"
 
+#include "Duration.h"
+
 namespace wp
 {
 
-void TimeRecord::setValue(const Seconds value)
+void TimeRecord::setValue(const std::chrono::seconds value)
 {
     m_value = value;
 }
 
 QString TimeRecord::getTimeText() const
 {
-    // TODO: Replace with actual converting code.
-    return QString("0000d 00h 00m 0%1s").arg(m_value);
+    return durationToString(m_value);
 }
 
-TimeRecord::TimeRecord(const Seconds initialValue, QObject* const parent)
+TimeRecord::TimeRecord(const std::chrono::seconds initialValue, QObject* const parent)
     : QObject(parent)
     , m_value(initialValue) {};
 
@@ -25,7 +26,7 @@ TimeRecord::TimeRecord(const TimeRecord& other) noexcept
 
 TimeRecord::TimeRecord(TimeRecord&& other) noexcept
     : QObject(other.parent())
-    , m_value(std::exchange(other.m_value, 0))
+    , m_value(std::exchange(other.m_value, std::chrono::seconds {0}))
 { }
 
 TimeRecord& TimeRecord::operator=(const TimeRecord& other) noexcept
@@ -39,7 +40,7 @@ TimeRecord& TimeRecord::operator=(const TimeRecord& other) noexcept
 TimeRecord& TimeRecord::operator=(TimeRecord&& other) noexcept
 {
     setParent(other.parent());
-    m_value = std::exchange(other.m_value, 0);
+    m_value = std::exchange(other.m_value, std::chrono::seconds {0});
 
     return *this;
 }
