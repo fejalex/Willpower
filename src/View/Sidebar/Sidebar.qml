@@ -175,7 +175,7 @@ Item {
 
         PropertyAnimation {
             id: hideAnimation
-            duration: 200
+            duration: 150
 
             target: _
             property: "showingCompletion"
@@ -191,7 +191,7 @@ Item {
 
         PropertyAnimation {
             id: showAnimation
-            duration: 200
+            duration: 150
 
             target: _
             property: "showingCompletion"
