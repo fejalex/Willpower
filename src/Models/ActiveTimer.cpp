@@ -23,8 +23,7 @@ QString ActiveTimer::getElapsedTimeText() const
 
     if (m_status == Status::Paused)
     {
-        const auto currentTime = now();
-        milliseconds = (currentTime - m_startTime) - (currentTime - m_pauseTime);
+        milliseconds = m_pauseTime - m_startTime;
     }
     else
     {
