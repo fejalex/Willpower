@@ -12,6 +12,7 @@ class FoldersList : public QAbstractListModel
 
 public:
     Q_INVOKABLE RecordsFolder* getFolderAt(qint64 index);
+    Q_INVOKABLE void createFolder(const QString& title);
 
 public:
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;

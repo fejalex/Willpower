@@ -19,6 +19,16 @@ RecordsFolder* FoldersList::getFolderAt(const qint64 index)
     return item;
 }
 
+void FoldersList::createFolder(const QString& title)
+{
+    const auto insertionPosition = static_cast<int>(m_recordsFolders.size());
+    beginInsertRows(QModelIndex(), insertionPosition, insertionPosition);
+
+    m_recordsFolders.emplace_back(title.data());
+
+    endInsertRows();
+}
+
 int FoldersList::rowCount(const QModelIndex&) const
 {
     return static_cast<int>(m_recordsFolders.size());

@@ -18,7 +18,7 @@ Item {
             PropertyChanges { target: modalTitle; text: "Create folder" }
             PropertyChanges { target: confirmButton; text: "Create" }
             PropertyChanges { target: confirmButton; onClicked: {
-                        console.log("Create folder clicked");
+                        cpp_database.getFoldersList().createFolder(folderNameTextField.text);
                         element.close();
                     } }
             PropertyChanges { target: element; visible: true }
@@ -199,6 +199,8 @@ Item {
 
                 Button {
                     id: confirmButton
+
+                    active: folderNameTextField.text != ""
 
                     horizontalPadding: 16
                     verticalPadding: 8
