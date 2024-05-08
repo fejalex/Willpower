@@ -45,7 +45,7 @@ Item {
 
             iconProperties: Variables.iconMenu24
 
-            title: "Default"
+            title: _.getCurrentFolder().getName();
 
             onButtonClicked: {
                 sidebar.show()

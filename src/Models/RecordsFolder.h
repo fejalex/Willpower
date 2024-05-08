@@ -12,7 +12,7 @@ class RecordsFolder : public QAbstractListModel
     Q_OBJECT
 
 public:
-    QString getName() const;
+    Q_INVOKABLE QString getName() const;
     TimeRecord* getTimeRecordAt(qint64 index);
     Q_INVOKABLE ActiveTimer* getActiveTimer();
     Q_INVOKABLE void appendTimeRecord(DurationInt seconds);
