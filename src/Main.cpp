@@ -2,6 +2,9 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickStyle>
+#include <QStandardPaths>
+#include <QFile>
+#include <QDir>
 
 #ifdef Q_OS_ANDROID
     #include <QJniObject>
@@ -12,6 +15,8 @@
 
 int main(int argc, char* argv[])
 {
+    QCoreApplication::setApplicationName("Willpower");
+
     QGuiApplication app(argc, argv);
 
     QQuickStyle::setStyle("Basic");
@@ -39,7 +44,12 @@ int main(int argc, char* argv[])
     qmlRegisterUncreatableType<wp::ActiveTimer>("ActiveTimer", 1, 0, "ActiveTimer",
                                                 "Access to active timer states enum.");
 
-    wp::Database database;
+    auto appDataLocation
+        = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+          + "/test.json";
+    wp::DataStorage<wp::Database> dataStorage(appDataLocation);
+
+    wp::Database database(&dataStorage);
 
     engine.rootContext()->setContextProperty("cpp_database", &database);
 
