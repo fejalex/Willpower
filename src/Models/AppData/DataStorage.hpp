@@ -55,7 +55,7 @@ void DataStorage<T>::saveData() const
 
     if (!file.open(QIODeviceBase::WriteOnly | QIODeviceBase::Text))
     {
-        qDebug() << QString("Could not open file \"%1\" for writing.").arg(m_filePath);
+        qWarning() << QString("Could not open file \"%1\" for writing.").arg(m_filePath);
         return;
     }
 

@@ -3,21 +3,24 @@ QT += quick \
 
 CONFIG += c++17
 
+INCLUDEPATH += $${PWD}/src/Models
+
 SOURCES += \
-        src/Main.cpp \
-        src/Models/Database.cpp \
+        src/Models/AppData/Database.cpp \
         src/Models/FoldersList.cpp \
         src/Models/RecordsFolder.cpp \
         src/Models/TimeRecord.cpp \
         src/Models/ActiveTimer.cpp \
+        src/Main.cpp \
 
 HEADERS += \
-        src/Models/Database.h \
+        src/Models/AppData/DataStorage.hpp \
+        src/Models/AppData/Database.h \
+        src/Models/Utils/Duration.h \
         src/Models/FoldersList.h \
         src/Models/RecordsFolder.h \
         src/Models/TimeRecord.h \
         src/Models/ActiveTimer.h \
-        src/Models/Duration.h \
 
 RESOURCES += qml.qrc
 

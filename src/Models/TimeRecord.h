@@ -2,7 +2,7 @@
 
 #include <QObject>
 
-#include "Duration.h"
+#include "Utils/Duration.h"
 
 namespace wp
 {
