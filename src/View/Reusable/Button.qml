@@ -6,15 +6,18 @@ import ".." // For using Variables.qml.
 Item {
     id: element
 
+    property bool active: true
+
+    property string text: ""
+    property alias iconProperties: buttonIcon.properties
+
+    property string inactiveBgColor: Variables.inactiveBgColor
+    property string inactiveFgColor: Variables.inactiveFgColor
     property string backgroundColor: Variables.backgroundColor
     property string foregroundColor: Variables.foregroundColor
 
     property string borderColor: "white"
     property int borderWidth: 0
-
-    property string text: ""
-
-    property alias iconProperties: buttonIcon.properties
 
     property int cornerRadius: 0
     property int horizontalPadding: 0
@@ -37,7 +40,7 @@ Item {
         width: Math.max(horizontalPadding * 2 + element.contentWidth, element.width)
         height: Math.max(verticalPadding * 2 + element.contentHeight, element.height)
 
-        color: element.backgroundColor
+        color: element.active ? element.backgroundColor : element.inactiveBgColor
 
         radius: element.cornerRadius
 
@@ -48,7 +51,7 @@ Item {
             id: row
 
             anchors.centerIn: parent
-            spacing: 0
+            spacing: element.spacing
 
             Icon {
                 id: buttonIcon
@@ -57,13 +60,7 @@ Item {
 
                 Layout.alignment: Qt.AlignVCenter
 
-                color: element.foregroundColor
-            }
-
-            Rectangle {
-                width: element.spacing
-                color: "transparent"
-                visible: buttonIcon.visible && buttonText.visible
+                color: element.active ? element.foregroundColor : element.inactiveFgColor
             }
 
             Text {
@@ -73,19 +70,24 @@ Item {
 
                 Layout.alignment: Qt.AlignVCenter
 
-                color: element.foregroundColor
+                color: element.active ? element.foregroundColor : element.inactiveFgColor
 
                 text: element.text
             }
         }
 
         MouseArea {
+            id: mouseArea
+
             anchors.fill: parent
 
-            cursorShape: "PointingHandCursor"
+            cursorShape: element.active ? Qt.PointingHandCursor : Qt.ArrowCursor
 
             onClicked: {
-                element.clicked()
+                if (element.active)
+                {
+                    element.clicked();
+                }
             }
         }
     }

@@ -23,6 +23,9 @@ Item {
     readonly property string redAccentColor: "#FD4949"
     readonly property string greyAccentColor: "#383C49"
     readonly property string placeholderColor: "#696F83"
+    // Colors for inactive elements.
+    readonly property string inactiveBgColor: "#444444"
+    readonly property string inactiveFgColor: "#808080"
     // Additional colors.
     readonly property string fadeColor: "#000000"
     readonly property string textSelectionBgColor: "#4F6F9E"
