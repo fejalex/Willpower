@@ -2,6 +2,8 @@
 
 #include <QQmlEngine>
 
+#include "AppData/Database.h"
+
 namespace wp
 {
 
@@ -37,6 +39,8 @@ void RecordsFolder::appendTimeRecord(const DurationInt seconds)
     beginInsertRows(QModelIndex(), 0, 0);
     m_timeRecords.emplace_back(Seconds {seconds});
     endInsertRows();
+
+    r_dataStorage->saveData();
 }
 
 int RecordsFolder::rowCount(const QModelIndex&) const
@@ -64,13 +68,13 @@ QHash<int, QByteArray> RecordsFolder::roleNames() const
     };
 }
 
-RecordsFolder::RecordsFolder(QObject* const parent)
-    : RecordsFolder(QStringView {}, parent)
-{ }
-
-RecordsFolder::RecordsFolder(const QStringView name, QObject* const parent)
+RecordsFolder::RecordsFolder(DataStorage<Database>* const dataStorage,
+                             const QStringView name,
+                             QObject* const parent)
     : QAbstractListModel(parent)
     , m_name(name.toString())
+    , m_activeTimer(dataStorage)
+    , r_dataStorage(dataStorage)
 {
     // TODO: Remove this initialization which was created for testing purposes.
     m_timeRecords.emplace_back(Seconds {5});
@@ -83,12 +87,16 @@ RecordsFolder::RecordsFolder(const RecordsFolder& other) noexcept
     : QAbstractListModel(other.parent())
     , m_name(other.m_name)
     , m_timeRecords(other.m_timeRecords)
+    , m_activeTimer(other.m_activeTimer)
+    , r_dataStorage(other.r_dataStorage)
 { }
 
 RecordsFolder::RecordsFolder(RecordsFolder&& other) noexcept
     : QAbstractListModel(other.parent())
     , m_name(std::exchange(other.m_name, ""))
     , m_timeRecords(std::exchange(other.m_timeRecords, {}))
+    , m_activeTimer(other.m_activeTimer)
+    , r_dataStorage(other.r_dataStorage)
 { }
 
 RecordsFolder& RecordsFolder::operator=(const RecordsFolder& other) noexcept
@@ -101,6 +109,8 @@ RecordsFolder& RecordsFolder::operator=(const RecordsFolder& other) noexcept
     setParent(other.parent());
     m_name = other.m_name;
     m_timeRecords = other.m_timeRecords;
+    m_activeTimer = other.m_activeTimer;
+    r_dataStorage = other.r_dataStorage;
 
     return *this;
 }
@@ -110,6 +120,8 @@ RecordsFolder& RecordsFolder::operator=(RecordsFolder&& other) noexcept
     setParent(other.parent());
     m_name = std::exchange(other.m_name, "");
     m_timeRecords = std::exchange(other.m_timeRecords, {});
+    m_activeTimer = std::exchange(other.m_activeTimer, ActiveTimer {other.r_dataStorage});
+    r_dataStorage = other.r_dataStorage;
 
     return *this;
 }

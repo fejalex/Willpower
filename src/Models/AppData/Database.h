@@ -26,7 +26,7 @@ public:
 
 public:
     QJsonObject saveToJson() const;
-    void loadFromJson(const QJsonObject& json);
+    bool loadFromJson(const QJsonObject& json);
 
 private:
     DataStorage<Database>* r_dataStorage;

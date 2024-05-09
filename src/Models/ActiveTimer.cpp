@@ -2,6 +2,8 @@
 
 #include <QDateTime>
 
+#include "AppData/Database.h"
+
 namespace wp
 {
 
@@ -62,14 +64,16 @@ DurationInt ActiveTimer::stop()
     return elapsedTime;
 }
 
-ActiveTimer::ActiveTimer(QObject* const parent)
-    : QObject(parent)
+ActiveTimer::ActiveTimer(DataStorage<Database>* const dataStorage, QObject* const parent)
+    : CopyableQObject(parent)
+    , r_dataStorage(dataStorage)
 { }
 
 void ActiveTimer::setStatus(const Status status)
 {
     m_status = status;
     emit statusChanged();
+    r_dataStorage->saveData();
 }
 
 } // namespace wp

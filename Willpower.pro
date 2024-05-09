@@ -17,6 +17,7 @@ HEADERS += \
         src/Models/AppData/DataStorage.hpp \
         src/Models/AppData/Database.h \
         src/Models/Utils/Duration.h \
+        src/Models/Utils/CopyableQObject.h \
         src/Models/FoldersList.h \
         src/Models/RecordsFolder.h \
         src/Models/TimeRecord.h \

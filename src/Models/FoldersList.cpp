@@ -2,6 +2,8 @@
 
 #include <QQmlEngine>
 
+#include "AppData/Database.h"
+
 namespace wp
 {
 RecordsFolder* FoldersList::getFolderAt(const qint64 index)
@@ -24,9 +26,11 @@ void FoldersList::createFolder(const QString& title)
     const auto insertionPosition = static_cast<int>(m_recordsFolders.size());
     beginInsertRows(QModelIndex(), insertionPosition, insertionPosition);
 
-    m_recordsFolders.emplace_back(title.data());
+    m_recordsFolders.emplace_back(r_dataStorage, title.data());
 
     endInsertRows();
+
+    r_dataStorage->saveData();
 }
 
 int FoldersList::rowCount(const QModelIndex&) const
@@ -51,12 +55,13 @@ QHash<int, QByteArray> FoldersList::roleNames() const
     };
 }
 
-FoldersList::FoldersList(QObject* const parent)
+FoldersList::FoldersList(DataStorage<Database>* dataStorage, QObject* const parent)
     : QAbstractListModel(parent)
+    , r_dataStorage(dataStorage)
 {
     // TODO: Remove this initialization which was created for testing purposes.
-    m_recordsFolders.emplace_back(u"Hello");
-    m_recordsFolders.emplace_back(u"World");
+    m_recordsFolders.emplace_back(dataStorage, u"Hello");
+    m_recordsFolders.emplace_back(dataStorage, u"World");
     m_recordsFolders.back().getTimeRecordAt(0)->setValue(Seconds {0});
 };
 

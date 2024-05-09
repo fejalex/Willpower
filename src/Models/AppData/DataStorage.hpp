@@ -49,6 +49,8 @@ void DataStorage<T>::saveData() const
         return;
     }
 
+    qDebug() << "Saving...";
+
     QDir::root().mkpath(QFileInfo(m_filePath).absolutePath());
 
     QFile file(m_filePath);
@@ -79,10 +81,7 @@ bool DataStorage<T>::tryLoadData() const
         return false;
     }
 
-    r_data->loadFromJson(QJsonDocument::fromJson(file.readAll()).object());
-    file.close();
-
-    return true;
+    return r_data->loadFromJson(QJsonDocument::fromJson(file.readAll()).object());
 }
 
 } // namespace wp

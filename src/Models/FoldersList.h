@@ -3,9 +3,13 @@
 #include <QAbstractListModel>
 
 #include "RecordsFolder.h"
+#include "AppData/DataStorage.hpp"
 
 namespace wp
 {
+
+class Database;
+
 class FoldersList : public QAbstractListModel
 {
     Q_OBJECT
@@ -20,7 +24,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 public:
-    explicit FoldersList(QObject* parent = nullptr);
+    FoldersList(DataStorage<Database>* dataStorage, QObject* parent = nullptr);
     ~FoldersList() override = default;
 
     FoldersList(const FoldersList&) = delete;
@@ -31,5 +35,7 @@ public:
 
 private:
     QList<RecordsFolder> m_recordsFolders;
+    DataStorage<Database>* r_dataStorage;
 };
+
 } // namespace wp

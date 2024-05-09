@@ -4,9 +4,13 @@
 
 #include "TimeRecord.h"
 #include "ActiveTimer.h"
+#include "AppData/DataStorage.hpp"
 
 namespace wp
 {
+
+class Database;
+
 class RecordsFolder : public QAbstractListModel
 {
     Q_OBJECT
@@ -23,8 +27,9 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 public:
-    explicit RecordsFolder(QObject* parent = nullptr);
-    RecordsFolder(QStringView name, QObject* parent = nullptr);
+    RecordsFolder(DataStorage<Database>* dataStorage,
+                  QStringView name = u"",
+                  QObject* parent = nullptr);
 
     ~RecordsFolder() override = default;
 
@@ -38,5 +43,8 @@ private:
     QString m_name;
     QList<TimeRecord> m_timeRecords;
     ActiveTimer m_activeTimer;
+
+    DataStorage<Database>* r_dataStorage;
 };
+
 } // namespace wp

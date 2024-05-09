@@ -94,8 +94,8 @@ Item {
                             createFolderModal.showEditFolder(title)
                         }
                         onSelected: {
-                            element.currentFolder = index
-                            element.close()
+                            element.currentFolder = index;
+                            element.close();
                         }
                     }
                 }

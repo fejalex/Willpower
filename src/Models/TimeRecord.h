@@ -3,10 +3,11 @@
 #include <QObject>
 
 #include "Utils/Duration.h"
+#include "Utils/CopyableQObject.h"
 
 namespace wp
 {
-class TimeRecord : public QObject
+class TimeRecord : public CopyableQObject
 {
     Q_OBJECT
 
@@ -19,11 +20,11 @@ public:
     explicit TimeRecord(Seconds initialValue = Seconds(0), QObject* parent = nullptr);
     ~TimeRecord() override = default;
 
-    TimeRecord(const TimeRecord& other) noexcept;
-    TimeRecord(TimeRecord&& other) noexcept;
+    TimeRecord(const TimeRecord& other) noexcept = default;
+    TimeRecord(TimeRecord&& other) noexcept = default;
 
-    TimeRecord& operator=(const TimeRecord& other) noexcept;
-    TimeRecord& operator=(TimeRecord&& other) noexcept;
+    TimeRecord& operator=(const TimeRecord& other) noexcept = default;
+    TimeRecord& operator=(TimeRecord&& other) noexcept = default;
 
 private:
     Seconds m_value {0};

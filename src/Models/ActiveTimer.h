@@ -3,11 +3,15 @@
 #include <QObject>
 
 #include "Utils/Duration.h"
+#include "AppData/DataStorage.hpp"
+#include "Utils/CopyableQObject.h"
 
 namespace wp
 {
 
-class ActiveTimer : public QObject
+class Database;
+
+class ActiveTimer : public CopyableQObject
 {
     Q_OBJECT
 
@@ -36,14 +40,14 @@ signals:
     void statusChanged();
 
 public:
-    explicit ActiveTimer(QObject* parent = nullptr);
+    explicit ActiveTimer(DataStorage<Database>* dataStorage, QObject* parent = nullptr);
     ~ActiveTimer() override = default;
 
-    ActiveTimer(const ActiveTimer&) = delete;
-    ActiveTimer(ActiveTimer&&) = delete;
+    ActiveTimer(const ActiveTimer&) = default;
+    ActiveTimer(ActiveTimer&&) = default;
 
-    ActiveTimer& operator=(ActiveTimer&&) = delete;
-    ActiveTimer& operator=(const ActiveTimer&) = delete;
+    ActiveTimer& operator=(const ActiveTimer&) = default;
+    ActiveTimer& operator=(ActiveTimer&&) = default;
 
 private:
     void setStatus(Status status);
@@ -52,6 +56,8 @@ private:
     Milliseconds m_startTime {0};
     Milliseconds m_pauseTime {0};
     Status m_status {Status::Stopped};
+
+    DataStorage<Database>* r_dataStorage;
 };
 
 } // namespace wp
