@@ -97,6 +97,7 @@ Item {
 
                 Component.onCompleted: {
                     visibleChanged();
+                    refresh();
                 }
 
                 PropertyAnimation {
