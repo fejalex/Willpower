@@ -33,6 +33,10 @@ public:
     FoldersList& operator=(const FoldersList&) = delete;
     FoldersList& operator=(FoldersList&&) = delete;
 
+public:
+    QJsonValue saveToJson() const;
+    void loadFromJson(const QJsonValue& json);
+
 private:
     QList<RecordsFolder> m_recordsFolders;
     DataStorage<Database>* r_dataStorage;

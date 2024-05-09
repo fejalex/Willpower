@@ -49,6 +49,10 @@ public:
     ActiveTimer& operator=(const ActiveTimer&) = default;
     ActiveTimer& operator=(ActiveTimer&&) = default;
 
+public:
+    QJsonValue saveToJson() const;
+    void loadFromJson(const QJsonValue& json);
+
 private:
     void setStatus(Status status);
 

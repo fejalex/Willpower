@@ -69,6 +69,26 @@ ActiveTimer::ActiveTimer(DataStorage<Database>* const dataStorage, QObject* cons
     , r_dataStorage(dataStorage)
 { }
 
+QJsonValue ActiveTimer::saveToJson() const
+{
+    QJsonObject result;
+
+    result.insert("startTime", m_startTime.count());
+    result.insert("pauseTime", m_pauseTime.count());
+    result.insert("status", static_cast<int>(m_status));
+
+    return result;
+}
+
+void ActiveTimer::loadFromJson(const QJsonValue& json)
+{
+    const auto object = json.toObject();
+
+    m_startTime = Milliseconds(object.value("startTime").toInteger(0));
+    m_pauseTime = Milliseconds(object.value("pauseTime").toInteger(0));
+    m_status = Status(object.value("status").toInt(0));
+}
+
 void ActiveTimer::setStatus(const Status status)
 {
     m_status = status;

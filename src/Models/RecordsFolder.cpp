@@ -1,6 +1,7 @@
 #include "RecordsFolder.h"
 
 #include <QQmlEngine>
+#include <QJsonArray>
 
 #include "AppData/Database.h"
 
@@ -75,27 +76,21 @@ RecordsFolder::RecordsFolder(DataStorage<Database>* const dataStorage,
     , m_name(name.toString())
     , m_activeTimer(dataStorage)
     , r_dataStorage(dataStorage)
-{
-    // TODO: Remove this initialization which was created for testing purposes.
-    m_timeRecords.emplace_back(Seconds {5});
-    m_timeRecords.emplace_back(Seconds {2});
-    m_timeRecords.emplace_back(Seconds {3});
-    m_timeRecords.emplace_back(Seconds {7});
-}
+{ }
 
 RecordsFolder::RecordsFolder(const RecordsFolder& other) noexcept
     : QAbstractListModel(other.parent())
     , m_name(other.m_name)
-    , m_timeRecords(other.m_timeRecords)
     , m_activeTimer(other.m_activeTimer)
+    , m_timeRecords(other.m_timeRecords)
     , r_dataStorage(other.r_dataStorage)
 { }
 
 RecordsFolder::RecordsFolder(RecordsFolder&& other) noexcept
     : QAbstractListModel(other.parent())
     , m_name(std::exchange(other.m_name, ""))
-    , m_timeRecords(std::exchange(other.m_timeRecords, {}))
     , m_activeTimer(other.m_activeTimer)
+    , m_timeRecords(std::exchange(other.m_timeRecords, {}))
     , r_dataStorage(other.r_dataStorage)
 { }
 
@@ -108,8 +103,8 @@ RecordsFolder& RecordsFolder::operator=(const RecordsFolder& other) noexcept
 
     setParent(other.parent());
     m_name = other.m_name;
-    m_timeRecords = other.m_timeRecords;
     m_activeTimer = other.m_activeTimer;
+    m_timeRecords = other.m_timeRecords;
     r_dataStorage = other.r_dataStorage;
 
     return *this;
@@ -119,11 +114,48 @@ RecordsFolder& RecordsFolder::operator=(RecordsFolder&& other) noexcept
 {
     setParent(other.parent());
     m_name = std::exchange(other.m_name, "");
-    m_timeRecords = std::exchange(other.m_timeRecords, {});
     m_activeTimer = std::exchange(other.m_activeTimer, ActiveTimer {other.r_dataStorage});
+    m_timeRecords = std::exchange(other.m_timeRecords, {});
     r_dataStorage = other.r_dataStorage;
 
     return *this;
+}
+
+QJsonValue RecordsFolder::saveToJson() const
+{
+    QJsonObject result;
+
+    QJsonArray timeRecords;
+    for (const auto& timeRecord : m_timeRecords)
+    {
+        timeRecords.push_back(timeRecord.saveToJson());
+    }
+
+    result.insert("name", m_name);
+    result.insert("activeTimer", m_activeTimer.saveToJson());
+    result.insert("timeRecords", timeRecords);
+
+    return result;
+}
+
+void RecordsFolder::loadFromJson(const QJsonValue& json)
+{
+    const QJsonObject object = json.toObject();
+
+    m_name = object.value("name").toString("");
+    m_activeTimer.loadFromJson(object.value("activeTimer"));
+
+    const auto timeRecords = object.value("timeRecords").toArray();
+
+    m_timeRecords.clear();
+    m_timeRecords.reserve(timeRecords.size());
+
+    for (const auto& timeRecord : timeRecords)
+    {
+        TimeRecord value;
+        value.loadFromJson(timeRecord);
+        m_timeRecords.emplace_back(std::move(value));
+    }
 }
 
 } // namespace wp

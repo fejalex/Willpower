@@ -25,11 +25,12 @@ public:
     Database& operator=(const Database&) = delete;
 
 public:
-    QJsonObject saveToJson() const;
-    bool loadFromJson(const QJsonObject& json);
+    QJsonValue saveToJson() const;
+    void loadFromJson(const QJsonValue& json);
 
 private:
-    DataStorage<Database>* r_dataStorage;
     FoldersList m_foldersList;
+
+    DataStorage<Database>* r_dataStorage;
 };
 } // namespace wp

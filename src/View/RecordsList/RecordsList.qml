@@ -73,7 +73,7 @@ Item {
                     rightMargin: 8
 
                     top: parent.top
-                    topMargin: hidingMargin
+                    topMargin: 0
                 }
 
                 visible: _.getActiveTimer().status !== ActiveTimer.Stopped
@@ -91,8 +91,12 @@ Item {
                     else
                     {
                         showActiveTimeRecord.running = false;
-                        anchors.topMargin = Qt.binding(function() { return hidingMargin })
+                        anchors.topMargin = hidingMargin;
                     }
+                }
+
+                Component.onCompleted: {
+                    visibleChanged();
                 }
 
                 PropertyAnimation {

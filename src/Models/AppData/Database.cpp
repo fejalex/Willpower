@@ -12,8 +12,8 @@ FoldersList* Database::getFoldersList()
 
 Database::Database(DataStorage<Database>* const dataStorage, QObject* const parent)
     : QObject(parent)
+    , m_foldersList(dataStorage)
     , r_dataStorage(dataStorage)
-    , m_foldersList(r_dataStorage)
 {
     r_dataStorage->setDataPointer(this);
     // Prevents the field from being deleted by QML JavaScript engine.
@@ -25,25 +25,20 @@ Database::Database(DataStorage<Database>* const dataStorage, QObject* const pare
     }
 }
 
-QJsonObject Database::saveToJson() const
+QJsonValue Database::saveToJson() const
 {
-    // TODO: replace this testing code with an actual implementation.
-    QJsonObject json;
-    json.insert("text", QJsonValue(QString("test")));
-    return json;
+    QJsonObject object;
+
+    object.insert("foldersList", m_foldersList.saveToJson());
+
+    return object;
 }
 
-bool Database::loadFromJson(const QJsonObject& json)
+void Database::loadFromJson(const QJsonValue& json)
 {
-    // TODO: replace this testing code with an actual implementation.
-    const auto it = json.find("text");
+    const auto object = json.toObject();
 
-    if (it != json.end() && *it == "test")
-    {
-        qDebug() << "Success";
-    }
-
-    return true;
+    m_foldersList.loadFromJson(object.value("foldersList"));
 };
 
 } // namespace wp

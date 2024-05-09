@@ -26,6 +26,10 @@ public:
     TimeRecord& operator=(const TimeRecord& other) noexcept = default;
     TimeRecord& operator=(TimeRecord&& other) noexcept = default;
 
+public:
+    QJsonValue saveToJson() const;
+    void loadFromJson(const QJsonValue& json);
+
 private:
     Seconds m_value {0};
 };

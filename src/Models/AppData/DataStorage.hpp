@@ -57,12 +57,13 @@ void DataStorage<T>::saveData() const
 
     if (!file.open(QIODeviceBase::WriteOnly | QIODeviceBase::Text))
     {
-        qWarning() << QString("Could not open file \"%1\" for writing.").arg(m_filePath);
+        qWarning()
+            << QString("Could not open file \"%1\" for data saving.").arg(m_filePath);
         return;
     }
 
     // TODO: Save with QJsonDocument::JsonFormat::Compact in release version.
-    file.write(QJsonDocument {r_data->saveToJson()}.toJson());
+    file.write(QJsonDocument(r_data->saveToJson().toObject()).toJson());
     file.close();
 }
 
@@ -78,10 +79,13 @@ bool DataStorage<T>::tryLoadData() const
 
     if (!file.open(QIODeviceBase::ReadOnly | QIODeviceBase::Text))
     {
+        qWarning()
+            << QString("Could not open file \"%1\" for data loading.").arg(m_filePath);
         return false;
     }
 
-    return r_data->loadFromJson(QJsonDocument::fromJson(file.readAll()).object());
+    r_data->loadFromJson(QJsonDocument::fromJson(file.readAll()).object());
+    return true;
 }
 
 } // namespace wp

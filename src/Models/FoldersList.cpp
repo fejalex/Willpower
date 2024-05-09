@@ -1,6 +1,7 @@
 #include "FoldersList.h"
 
 #include <QQmlEngine>
+#include <QJsonArray>
 
 #include "AppData/Database.h"
 
@@ -59,10 +60,44 @@ FoldersList::FoldersList(DataStorage<Database>* dataStorage, QObject* const pare
     : QAbstractListModel(parent)
     , r_dataStorage(dataStorage)
 {
-    // TODO: Remove this initialization which was created for testing purposes.
-    m_recordsFolders.emplace_back(dataStorage, u"Hello");
-    m_recordsFolders.emplace_back(dataStorage, u"World");
-    m_recordsFolders.back().getTimeRecordAt(0)->setValue(Seconds {0});
+    m_recordsFolders.emplace_back(dataStorage, u"Default");
+}
+
+QJsonValue FoldersList::saveToJson() const
+{
+    QJsonObject result;
+
+    QJsonArray recordsFolders;
+    for (const auto& timeRecord : m_recordsFolders)
+    {
+        recordsFolders.push_back(timeRecord.saveToJson());
+    }
+
+    result.insert("recordsFolders", recordsFolders);
+
+    return result;
+}
+
+void FoldersList::loadFromJson(const QJsonValue& json)
+{
+    const QJsonObject object = json.toObject();
+
+    const auto recordsFolders = object.value("recordsFolders").toArray();
+
+    m_recordsFolders.clear();
+    m_recordsFolders.reserve(recordsFolders.size());
+
+    for (const auto& timeRecord : recordsFolders)
+    {
+        RecordsFolder value(r_dataStorage);
+        value.loadFromJson(timeRecord);
+        m_recordsFolders.emplace_back(std::move(value));
+    }
+
+    if (m_recordsFolders.empty())
+    {
+        m_recordsFolders.emplace_back(r_dataStorage, u"Default");
+    }
 };
 
 } // namespace wp

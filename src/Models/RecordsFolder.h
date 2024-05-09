@@ -39,10 +39,14 @@ public:
     RecordsFolder& operator=(const RecordsFolder&) noexcept;
     RecordsFolder& operator=(RecordsFolder&&) noexcept;
 
+public:
+    QJsonValue saveToJson() const;
+    void loadFromJson(const QJsonValue& json);
+
 private:
     QString m_name;
-    QList<TimeRecord> m_timeRecords;
     ActiveTimer m_activeTimer;
+    QList<TimeRecord> m_timeRecords;
 
     DataStorage<Database>* r_dataStorage;
 };
