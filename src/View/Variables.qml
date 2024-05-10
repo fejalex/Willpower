@@ -48,15 +48,8 @@ Item {
     }
 
     // Icons
-    readonly property IconProperties iconEdit16:        IconProperties { svg: "qrc:/src/Resources/Icons/edit.svg";         width: 16; height: 16 }
-    readonly property IconProperties iconDelete16:      IconProperties { svg: "qrc:/src/Resources/Icons/delete.svg";       width: 14; height: 16 }
-
     readonly property IconProperties iconClock16:       IconProperties { svg: "qrc:/src/Resources/Icons/clock.svg";        width: 16; height: 16 }
     readonly property IconProperties iconPause16:       IconProperties { svg: "qrc:/src/Resources/Icons/pause.svg";        width: 10; height: 16 }
-
-    readonly property IconProperties iconTick16:        IconProperties { svg: "qrc:/src/Resources/Icons/tick.svg";         width: 14; height: 16 }
-    readonly property IconProperties iconChevronUp16:   IconProperties { svg: "qrc:/src/Resources/Icons/chevron-up.svg";   width: 14; height: 16 }
-    readonly property IconProperties iconChevronDown16: IconProperties { svg: "qrc:/src/Resources/Icons/chevron-down.svg"; width: 14; height: 16 }
 
     readonly property IconProperties iconMenu24:        IconProperties { svg: "qrc:/src/Resources/Icons/menu.svg";         width: 21; height: 24 }
     readonly property IconProperties iconClose24:       IconProperties { svg: "qrc:/src/Resources/Icons/close.svg";        width: 18; height: 24 }
@@ -65,8 +58,5 @@ Item {
     readonly property IconProperties iconPause24:       IconProperties { svg: "qrc:/src/Resources/Icons/pause.svg";        width: 15; height: 24 }
     readonly property IconProperties iconStop24:        IconProperties { svg: "qrc:/src/Resources/Icons/stop.svg";         width: 18; height: 24 }
 
-    readonly property IconProperties iconSun24:         IconProperties { svg: "qrc:/src/Resources/Icons/sun.svg";          width: 24; height: 24 }
-    readonly property IconProperties iconMoon24:        IconProperties { svg: "qrc:/src/Resources/Icons/moon.svg";         width: 18; height: 24 }
     readonly property IconProperties iconPlus24:        IconProperties { svg: "qrc:/src/Resources/Icons/plus.svg";         width: 21; height: 24 }
-    readonly property IconProperties iconSettings24:    IconProperties { svg: "qrc:/src/Resources/Icons/settings.svg";     width: 24; height: 24 }
 }

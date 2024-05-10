@@ -46,20 +46,6 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WordWrap
             }
-
-            Button {
-                Layout.preferredHeight: 48
-                Layout.preferredWidth: height
-
-                iconProperties: Variables.iconEdit16
-
-                backgroundColor: "transparent"
-                foregroundColor: Variables.foregroundColor
-
-                onClicked: {
-                    element.editClicked()
-                }
-            }
         }
     }
 }

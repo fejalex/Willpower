@@ -10,8 +10,6 @@
         <file>src/View/Reusable/Icon.qml</file>
         <file>src/View/Reusable/Button.qml</file>
         <file>src/View/Reusable/Fade.qml</file>
-        <file>src/View/Reusable/LabeledCheckbox.qml</file>
-        <file>src/View/Reusable/NumberSelector.qml</file>
         <file>src/View/Reusable/TopBar.qml</file>
 
         <file>src/View/RecordsList/TimeRecord.qml</file>
@@ -23,7 +21,6 @@
         <file>src/View/Sidebar/FolderOption.qml</file>
         <file>src/View/Sidebar/Sidebar.qml</file>
 
-        <file>src/View/ModalWindows/DeletionModal.qml</file>
         <file>src/View/ModalWindows/FolderCreationModal.qml</file>
 
 
@@ -31,15 +28,8 @@
         <file>src/Resources/Fonts/JetBrainsMono.ttf</file>
 
 
-        <file>src/Resources/Icons/edit.svg</file>
-        <file>src/Resources/Icons/delete.svg</file>
-
         <file>src/Resources/Icons/clock.svg</file>
         <file>src/Resources/Icons/pause.svg</file>
-
-        <file>src/Resources/Icons/tick.svg</file>
-        <file>src/Resources/Icons/chevron-up.svg</file>
-        <file>src/Resources/Icons/chevron-down.svg</file>
 
         <file>src/Resources/Icons/menu.svg</file>
         <file>src/Resources/Icons/close.svg</file>
@@ -47,10 +37,7 @@
         <file>src/Resources/Icons/play.svg</file>
         <file>src/Resources/Icons/stop.svg</file>
 
-        <file>src/Resources/Icons/sun.svg</file>
-        <file>src/Resources/Icons/moon.svg</file>
         <file>src/Resources/Icons/plus.svg</file>
-        <file>src/Resources/Icons/settings.svg</file>
 
     </qresource>
 </RCC>

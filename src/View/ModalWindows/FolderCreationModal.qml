@@ -22,42 +22,13 @@ Item {
                         element.close();
                     } }
             PropertyChanges { target: element; visible: true }
-            PropertyChanges { target: checkboxEditable; visible: true }
-            PropertyChanges { target: checkboxDeletable; visible: true }
-            PropertyChanges { target: checkboxEditable; isChecked: false }
-            PropertyChanges { target: checkboxDeletable; isChecked: false }
             PropertyChanges { target: folderNameTextField; text: "" }
-            PropertyChanges { target: numberSelector; number: 0 }
-            PropertyChanges { target: element; visible: true }
             PropertyChanges { target: folderNameTextField; focus: true }
-            PropertyChanges { target: deleteButton; visible: false }
-        },
-        State {
-            name: "EditFolder"
-            PropertyChanges { target: modalTitle; text: "Edit folder" }
-            PropertyChanges { target: confirmButton; text: "Save" }
-            PropertyChanges { target: confirmButton; onClicked: {
-                        console.log("Save folder properties clicked");
-                        element.close();
-                    } }
-            PropertyChanges { target: element; visible: true }
-            PropertyChanges { target: checkboxEditable; visible: false }
-            PropertyChanges { target: checkboxDeletable; visible: false }
-            PropertyChanges { target: folderNameTextField; text: "" }
-            PropertyChanges { target: numberSelector; number: 0 }
-            PropertyChanges { target: element; visible: true }
-            PropertyChanges { target: folderNameTextField; focus: true }
-            PropertyChanges { target: deleteButton; visible: true }
         }
     ]
 
     function showCreateFolder() {
         element.state = "CreateFolder"
-    }
-
-    function showEditFolder(currentTitle) {
-        element.state = "EditFolder"
-        folderNameTextField.text = currentTitle
     }
 
     function close() {
@@ -130,68 +101,6 @@ Item {
                 color: Variables.foregroundColor
             }
 
-            LabeledCheckbox {
-                id: checkboxEditable
-
-                Layout.fillWidth: true
-
-                foregroundColor: Variables.foregroundColor
-                backgroundColor: Variables.backgroundColor
-                accentColor: Variables.greyAccentColor
-                secondaryColor: Variables.placeholderColor
-
-                text: "Editable time records"
-                hintText: "This property can't be changed later"
-            }
-
-            LabeledCheckbox {
-                id: checkboxDeletable
-
-                Layout.fillWidth: true
-
-                foregroundColor: Variables.foregroundColor
-                backgroundColor: Variables.backgroundColor
-                accentColor: Variables.greyAccentColor
-                secondaryColor: Variables.placeholderColor
-
-                text: "Deletable time records"
-                hintText: "This property can't be changed later"
-            }
-
-            NumberSelector {
-                id: numberSelector
-
-                Layout.fillWidth: true
-
-                font { family: Variables.generalFont; pixelSize: 16 }
-
-                foregroundColor: Variables.foregroundColor
-                backgroundColor: Variables.backgroundColor
-                accentColor: Variables.greyAccentColor
-                secondaryColor: Variables.placeholderColor
-            }
-
-            Button {
-                id: deleteButton
-
-                Layout.preferredHeight: 38
-
-                verticalPadding: 2
-                spacing: 12
-
-                foregroundColor: Variables.redAccentColor
-                backgroundColor: Variables.backgroundColor
-
-                iconProperties: Variables.iconDelete16
-
-                text: "Delete folder"
-                font { family: Variables.generalFont; pixelSize: 16; weight: 600 }
-
-                onClicked: {
-                    folderDeletionModal.display()
-                }
-            }
-
             RowLayout {
                 Layout.alignment: Qt.AlignRight
 
@@ -228,19 +137,6 @@ Item {
                     }
                 }
             }
-        }
-    }
-
-    DeletionModal {
-        id: folderDeletionModal
-
-        function display() {
-            show("Are you sure that you want to delete the folder?");
-        }
-
-        onDeleteClicked: {
-            console.log("Delete folder clicked");
-            element.close();
         }
     }
 }

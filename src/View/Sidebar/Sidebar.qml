@@ -125,38 +125,6 @@ Item {
                 }
 
                 Button {
-                    property bool isLightThemeEnabled: false
-
-                    Layout.preferredHeight: Math.min(56, sidebarButtons.maxButtonSize)
-                    Layout.preferredWidth: height
-
-                    backgroundColor: Variables.greyAccentColor
-
-                    cornerRadius: height / 2
-
-                    iconProperties: isLightThemeEnabled ? Variables.iconMoon24 : Variables.iconSun24
-
-                    onClicked: {
-                        isLightThemeEnabled = !isLightThemeEnabled
-                    }
-                }
-
-                Button {
-                    Layout.preferredHeight: Math.min(56, sidebarButtons.maxButtonSize)
-                    Layout.preferredWidth: height
-
-                    backgroundColor: Variables.greyAccentColor
-
-                    cornerRadius: height / 2
-
-                    iconProperties: Variables.iconSettings24
-
-                    onClicked: {
-                        console.log("Settings button clicked")
-                    }
-                }
-
-                Button {
                     Layout.preferredHeight: Math.min(56, sidebarButtons.maxButtonSize)
                     Layout.preferredWidth: height
 

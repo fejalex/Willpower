@@ -134,8 +134,6 @@ Item {
                         Layout.fillWidth: true
 
                         text: textValue
-                        isEditable: false
-                        isDeletable: false
                     }
                 }
 
@@ -172,18 +170,6 @@ Item {
                 let elapsedSeconds = _.getActiveTimer().stop();
                 _.getCurrentFolder().appendTimeRecord(elapsedSeconds);
             }
-        }
-    }
-
-    DeletionModal {
-        id: recordDeletionModal
-
-        function display() {
-            show("Are you sure that you want to delete the time record?")
-        }
-
-        onDeleteClicked: {
-            console.log("Delete time record clicked")
         }
     }
 
