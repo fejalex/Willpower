@@ -3,7 +3,7 @@
 #include <QQmlEngine>
 #include <QJsonArray>
 
-#include "AppData/Database.h"
+#include "Database.h"
 
 namespace wp
 {

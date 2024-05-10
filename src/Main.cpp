@@ -11,7 +11,7 @@
     #include <QColor>
 #endif // Q_OS_ANDROID
 
-#include "AppData/Database.h"
+#include "Models/Database.h"
 
 int main(int argc, char* argv[])
 {

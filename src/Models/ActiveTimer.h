@@ -2,9 +2,9 @@
 
 #include <QObject>
 
-#include "Utils/Duration.h"
-#include "AppData/DataStorage.hpp"
-#include "Utils/CopyableQObject.h"
+#include "Utils/Duration.hpp"
+#include "Utils/DataStorage.hpp"
+#include "Utils/CopyableQObject.hpp"
 
 namespace wp
 {

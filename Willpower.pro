@@ -3,10 +3,10 @@ QT += quick \
 
 CONFIG += c++17
 
-INCLUDEPATH += $${PWD}/src/Models
+INCLUDEPATH += $${PWD}/src
 
 SOURCES += \
-        src/Models/AppData/Database.cpp \
+        src/Models/Database.cpp \
         src/Models/FoldersList.cpp \
         src/Models/RecordsFolder.cpp \
         src/Models/TimeRecord.cpp \
@@ -14,10 +14,10 @@ SOURCES += \
         src/Main.cpp \
 
 HEADERS += \
-        src/Models/AppData/DataStorage.hpp \
-        src/Models/AppData/Database.h \
-        src/Models/Utils/Duration.h \
-        src/Models/Utils/CopyableQObject.h \
+        src/Utils/CopyableQObject.hpp \
+        src/Utils/DataStorage.hpp \
+        src/Utils/Duration.hpp \
+        src/Models/Database.h \
         src/Models/FoldersList.h \
         src/Models/RecordsFolder.h \
         src/Models/TimeRecord.h \

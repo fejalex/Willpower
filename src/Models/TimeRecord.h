@@ -2,8 +2,8 @@
 
 #include <QObject>
 
-#include "Utils/Duration.h"
-#include "Utils/CopyableQObject.h"
+#include "Utils/Duration.hpp"
+#include "Utils/CopyableQObject.hpp"
 
 namespace wp
 {

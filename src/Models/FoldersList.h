@@ -3,7 +3,7 @@
 #include <QAbstractListModel>
 
 #include "RecordsFolder.h"
-#include "AppData/DataStorage.hpp"
+#include "Utils/DataStorage.hpp"
 
 namespace wp
 {

@@ -2,7 +2,7 @@
 
 #include <QDateTime>
 
-#include "AppData/Database.h"
+#include "Database.h"
 
 namespace wp
 {

@@ -2,7 +2,7 @@
 
 #include <QObject>
 
-#include "DataStorage.hpp"
+#include "Utils/DataStorage.hpp"
 #include "FoldersList.h"
 
 namespace wp
