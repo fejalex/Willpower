@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 
     auto appDataLocation
         = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
-          + "/test.json";
+          + "/data.json";
     wp::DataStorage<wp::Database> dataStorage(appDataLocation);
 
     wp::Database database(&dataStorage);

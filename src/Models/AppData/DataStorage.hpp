@@ -62,8 +62,8 @@ void DataStorage<T>::saveData() const
         return;
     }
 
-    // TODO: Save with QJsonDocument::JsonFormat::Compact in release version.
-    file.write(QJsonDocument(r_data->saveToJson().toObject()).toJson());
+    file.write(QJsonDocument(r_data->saveToJson().toObject())
+                   .toJson(QJsonDocument::JsonFormat::Compact));
     file.close();
 }
 
