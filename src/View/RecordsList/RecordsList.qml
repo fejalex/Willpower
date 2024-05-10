@@ -190,7 +190,10 @@ Item {
     Sidebar {
         id: sidebar
 
+        currentFolder: cpp_database.getFoldersList().getMemorizedCurrentFolder()
+
         onCurrentFolderChanged: {
+            cpp_database.getFoldersList().setMemorizedCurrentFolder(currentFolder);
             activeTimeRecord.refresh();
         }
     }

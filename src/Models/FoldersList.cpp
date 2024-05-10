@@ -34,6 +34,17 @@ void FoldersList::createFolder(const QString& title)
     r_dataStorage->saveData();
 }
 
+Q_INVOKABLE void FoldersList::setMemorizedCurrentFolder(const int index)
+{
+    m_memorizedCurrentFolder = index;
+    r_dataStorage->saveData();
+}
+
+Q_INVOKABLE int FoldersList::getMemorizedCurrentFolder() const
+{
+    return m_memorizedCurrentFolder;
+}
+
 int FoldersList::rowCount(const QModelIndex&) const
 {
     return static_cast<int>(m_recordsFolders.size());
@@ -74,6 +85,7 @@ QJsonValue FoldersList::saveToJson() const
     }
 
     result.insert("recordsFolders", recordsFolders);
+    result.insert("memorizedCurrentFolder", m_memorizedCurrentFolder);
 
     return result;
 }
@@ -97,6 +109,14 @@ void FoldersList::loadFromJson(const QJsonValue& json)
     if (m_recordsFolders.empty())
     {
         m_recordsFolders.emplace_back(r_dataStorage, u"Default");
+    }
+
+    m_memorizedCurrentFolder = object.value("memorizedCurrentFolder").toInt(0);
+
+    if (m_memorizedCurrentFolder < 0
+        || m_memorizedCurrentFolder >= m_recordsFolders.size())
+    {
+        m_memorizedCurrentFolder = 0;
     }
 };
 

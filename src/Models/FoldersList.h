@@ -18,6 +18,9 @@ public:
     Q_INVOKABLE RecordsFolder* getFolderAt(qint64 index);
     Q_INVOKABLE void createFolder(const QString& title);
 
+    Q_INVOKABLE void setMemorizedCurrentFolder(int index);
+    Q_INVOKABLE int getMemorizedCurrentFolder() const;
+
 public:
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int = Qt::DisplayRole) const override;
@@ -39,6 +42,8 @@ public:
 
 private:
     QList<RecordsFolder> m_recordsFolders;
+    int m_memorizedCurrentFolder {0};
+
     DataStorage<Database>* r_dataStorage;
 };
 
